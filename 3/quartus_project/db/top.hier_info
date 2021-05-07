@@ -1,0 +1,35 @@
+|top
+clk_in => state_reg[0].CLK
+clk_in => state_reg[1].CLK
+clk_in => state_reg[2].CLK
+clk_in => state_reg[3].CLK
+clk_in => state_reg[4].CLK
+clk_in => state_reg[5].CLK
+clk_in => state_reg[6].CLK
+clk_in => state_reg[7].CLK
+rst_in => state_reg[0].ACLR
+rst_in => state_reg[1].ACLR
+rst_in => state_reg[2].ACLR
+rst_in => state_reg[3].ACLR
+rst_in => state_reg[4].ACLR
+rst_in => state_reg[5].ACLR
+rst_in => state_reg[6].ACLR
+rst_in => state_reg[7].ACLR
+enable_in => state_reg[7].ENA
+enable_in => state_reg[6].ENA
+enable_in => state_reg[5].ENA
+enable_in => state_reg[4].ENA
+enable_in => state_reg[3].ENA
+enable_in => state_reg[2].ENA
+enable_in => state_reg[1].ENA
+enable_in => state_reg[0].ENA
+state_out[0] <= state_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+state_out[1] <= state_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+state_out[2] <= state_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+state_out[3] <= state_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+state_out[4] <= state_reg[4].DB_MAX_OUTPUT_PORT_TYPE
+state_out[5] <= state_reg[5].DB_MAX_OUTPUT_PORT_TYPE
+state_out[6] <= state_reg[6].DB_MAX_OUTPUT_PORT_TYPE
+state_out[7] <= state_reg[7].DB_MAX_OUTPUT_PORT_TYPE
+
+

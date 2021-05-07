@@ -1,0 +1,53 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "state_out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "state_out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "state_out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "state_out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "state_out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "state_out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "state_out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "state_out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "clk_in",
+					"strict" : false
+				},
+				{
+					"name" : "rst_in",
+					"strict" : false
+				},
+				{
+					"name" : "enable_in",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
