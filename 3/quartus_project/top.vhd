@@ -33,16 +33,16 @@ begin
 
         if (enable_in = '1') then
 
-            state_next <= std_logic_vector (unsigned(state_reg) + 1);
-
             if (state_reg = x"1D") then
                 state_next <= x"0A";
             elsif (state_reg = x"17") then
                 state_next <= x"0B";
-            elsif (state_reg = x"A") then
+            elsif (state_reg = x"0A") then
                 state_next <= x"17";
             elsif (state_reg = x"10") then
                 state_next <= x"1B";
+            else 
+                state_next <= std_logic_vector (unsigned(state_reg) + 1);
             end if;
 
         else

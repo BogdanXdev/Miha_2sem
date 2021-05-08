@@ -1,0 +1,98 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/code/miha_2sem/3/quartus_project/simulation/modelsim
+Etop
+Z1 w1620475122
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 4
+R0
+Z5 8C:/code/miha_2sem/3/quartus_project/top.vhd
+Z6 FC:/code/miha_2sem/3/quartus_project/top.vhd
+l0
+L5 1
+VeMXMeJJ3U[O5B>8AeXen_2
+!s100 57I=U6l]K>kEOfol9Hh_T3
+Z7 OV;C;2020.1;71
+33
+Z8 !s110 1620475134
+!i10b 1
+Z9 !s108 1620475134.000000
+Z10 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/code/miha_2sem/3/quartus_project/top.vhd|
+Z11 !s107 C:/code/miha_2sem/3/quartus_project/top.vhd|
+!i113 1
+Z12 o-work work -2008 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Artl
+R2
+R3
+R4
+Z14 DEx4 work 3 top 0 22 eMXMeJJ3U[O5B>8AeXen_2
+!i122 4
+l20
+L15 44
+V>Ojh5PR8Do^WbJMI5R`Qc2
+!s100 4J1Z<a7nM[lSgcOKJ6<F;3
+R7
+33
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Etop_tb
+Z15 w1620474314
+R2
+R3
+R4
+!i122 5
+R0
+Z16 8C:/code/miha_2sem/3/quartus_project/top_tb.vhd
+Z17 FC:/code/miha_2sem/3/quartus_project/top_tb.vhd
+l0
+L5 1
+V^ilTcjaX03<ICRaPjSLiI0
+!s100 h<c9JjcQZfeAN:4;d]L082
+R7
+32
+R8
+!i10b 1
+R9
+Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/code/miha_2sem/3/quartus_project/top_tb.vhd|
+Z19 !s107 C:/code/miha_2sem/3/quartus_project/top_tb.vhd|
+!i113 1
+Z20 o-work work -2002 -explicit
+R13
+Asim
+R14
+R2
+R3
+R4
+Z21 DEx4 work 6 top_tb 0 22 ^ilTcjaX03<ICRaPjSLiI0
+!i122 5
+l16
+Z22 L8 32
+Z23 VMW7LY[gN68=Ad@d_HNQMe1
+Z24 !s100 cXR2;cTTcXzg6>Fj7cnTL0
+R7
+32
+R8
+!i10b 1
+R9
+R18
+R19
+!i113 1
+R20
+R13
