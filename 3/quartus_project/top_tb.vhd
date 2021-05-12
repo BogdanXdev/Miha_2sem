@@ -19,13 +19,13 @@ begin
     clk_tb <= not clk_tb after half_period * 1 ns;
     rst_tb <= '1' after half_period * 1 ns, '0' after half_period * 8 ns;
 
-    -- dut : entity work.top
-    --     port map(
-    --         clk_in => clk_tb,
-    --         rst_in => rst_tb,
-    --         enable_in => enable_tb,
-    --         state_out => state_out_tb
-    --     );
+     dut : entity work.top
+         port map(
+             clk_in => clk_tb,
+             rst_in => rst_tb,
+             enable_in => enable_tb,
+             state_out => state_out_tb
+         );
 
     enable_cntr : entity work.qntr_tb
         generic map(
