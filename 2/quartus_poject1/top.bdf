@@ -40,7 +40,7 @@ https://fpgasoftware.intel.com/eula.
 	(output)
 	(rect 1072 432 1248 448)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
-	(text "state_o" (rect 90 0 126 12)(font "Arial" ))
+	(text "state_o[7..0]" (rect 90 0 152 12)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))

@@ -1,5 +1,5 @@
-Analysis & Elaboration report for top
-Thu May 06 01:27:33 2021
+Analysis & Synthesis report for top
+Sat May 22 18:07:15 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -7,10 +7,35 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Elaboration Summary
-  3. Parallel Compilation
-  4. Analysis & Elaboration Settings
-  5. Analysis & Elaboration Messages
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Parameter Settings for User Entity Instance: BUSMUX:inst2
+ 12. Parameter Settings for User Entity Instance: comparator:inst25
+ 13. Parameter Settings for User Entity Instance: LPM_CONSTANT:inst17
+ 14. Parameter Settings for User Entity Instance: BUSMUX:inst3
+ 15. Parameter Settings for User Entity Instance: comparator:inst26
+ 16. Parameter Settings for User Entity Instance: LPM_CONSTANT:inst15
+ 17. Parameter Settings for User Entity Instance: BUSMUX:inst4
+ 18. Parameter Settings for User Entity Instance: comparator:inst27
+ 19. Parameter Settings for User Entity Instance: LPM_CONSTANT:inst13
+ 20. Parameter Settings for User Entity Instance: BUSMUX:inst5
+ 21. Parameter Settings for User Entity Instance: comparator:inst28
+ 22. Parameter Settings for User Entity Instance: LPM_CONSTANT:inst10
+ 23. Parameter Settings for User Entity Instance: incrementer:inst29
+ 24. Parameter Settings for User Entity Instance: LPM_CONSTANT:inst6
+ 25. Parameter Settings for User Entity Instance: LPM_CONSTANT:inst7
+ 26. Parameter Settings for User Entity Instance: LPM_CONSTANT:inst8
+ 27. Parameter Settings for User Entity Instance: LPM_CONSTANT:inst9
+ 28. Post-Synthesis Netlist Statistics for Top Partition
+ 29. Elapsed Time Per Partition
+ 30. Analysis & Synthesis Messages
 
 
 
@@ -34,42 +59,31 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+-----------------------------------------------------------------------------+
-; Analysis & Elaboration Summary                                              ;
-+-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Failed - Thu May 06 01:27:33 2021           ;
-; Quartus Prime Version         ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
-; Revision Name                 ; top                                         ;
-; Top-level Entity Name         ; top                                         ;
-; Family                        ; Cyclone V                                   ;
-; Logic utilization (in ALMs)   ; N/A until Partition Merge                   ;
-; Total registers               ; N/A until Partition Merge                   ;
-; Total pins                    ; N/A until Partition Merge                   ;
-; Total virtual pins            ; N/A until Partition Merge                   ;
-; Total block memory bits       ; N/A until Partition Merge                   ;
-; Total PLLs                    ; N/A until Partition Merge                   ;
-; Total DLLs                    ; N/A until Partition Merge                   ;
-+-------------------------------+---------------------------------------------+
-
-
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-+----------------------------+-------------+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sat May 22 18:07:15 2021       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; top                                         ;
+; Top-level Entity Name           ; top                                         ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 9                                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Elaboration Settings                                                                                           ;
+; Analysis & Synthesis Settings                                                                                             ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                          ; Setting            ; Default Value      ;
 +---------------------------------------------------------------------------------+--------------------+--------------------+
@@ -155,14 +169,340 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+---------------------------------+
-; Analysis & Elaboration Messages ;
-+---------------------------------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                            ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                  ; Library ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
+; top.bdf                          ; yes             ; User Block Diagram/Schematic File  ; C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/2/quartus_poject1/top.bdf         ;         ;
+; comparator.vhd                   ; yes             ; User VHDL File                     ; C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/2/quartus_poject1/comparator.vhd  ;         ;
+; incrementer.vhd                  ; yes             ; User VHDL File                     ; C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/2/quartus_poject1/incrementer.vhd ;         ;
+; busmux.tdf                       ; yes             ; Megafunction                       ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/busmux.tdf             ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                       ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mux.inc            ;         ;
+; lpm_mux.tdf                      ; yes             ; Megafunction                       ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mux.tdf            ;         ;
+; aglobal201.inc                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/aglobal201.inc         ;         ;
+; muxlut.inc                       ; yes             ; Megafunction                       ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/muxlut.inc             ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                       ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/bypassff.inc           ;         ;
+; altshift.inc                     ; yes             ; Megafunction                       ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/altshift.inc           ;         ;
+; db/mux_0kc.tdf                   ; yes             ; Auto-Generated Megafunction        ; C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/2/quartus_poject1/db/mux_0kc.tdf  ;         ;
+; lpm_constant.tdf                 ; yes             ; Megafunction                       ; c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_constant.tdf       ;         ;
++----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                     ;
++---------------------------------------------+-------------------+
+; Resource                                    ; Usage             ;
++---------------------------------------------+-------------------+
+; Estimate of Logic utilization (ALMs needed) ; 0                 ;
+;                                             ;                   ;
+; Combinational ALUT usage for logic          ; 0                 ;
+;     -- 7 input functions                    ; 0                 ;
+;     -- 6 input functions                    ; 0                 ;
+;     -- 5 input functions                    ; 0                 ;
+;     -- 4 input functions                    ; 0                 ;
+;     -- <=3 input functions                  ; 0                 ;
+;                                             ;                   ;
+; Dedicated logic registers                   ; 0                 ;
+;                                             ;                   ;
+; I/O pins                                    ; 9                 ;
+;                                             ;                   ;
+; Total DSP Blocks                            ; 0                 ;
+;                                             ;                   ;
+; Maximum fan-out node                        ; state_o[7]~output ;
+; Maximum fan-out                             ; 1                 ;
+; Total fan-out                               ; 9                 ;
+; Average fan-out                             ; 0.50              ;
++---------------------------------------------+-------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |top                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 9    ; 0            ; |top                ; top         ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                           ;
++---------------------------------------+--------------------------------------+
+; Register name                         ; Reason for Removal                   ;
++---------------------------------------+--------------------------------------+
+; inst[0..7]                            ; Stuck at GND due to stuck port clear ;
+; Total Number of Removed Registers = 8 ;                                      ;
++---------------------------------------+--------------------------------------+
+
+
++----------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                      ;
++---------------+-------------------------+----------------------------------------+
+; Register name ; Reason for Removal      ; Registers Removed due to This Register ;
++---------------+-------------------------+----------------------------------------+
+; inst[7]       ; Stuck at GND            ; inst[0]                                ;
+;               ; due to stuck port clear ;                                        ;
++---------------+-------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: BUSMUX:inst2 ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; WIDTH          ; 8     ; Untyped                          ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: comparator:inst25 ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; width          ; 8     ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LPM_CONSTANT:inst17 ;
++--------------------+------------------+--------------------------+
+; Parameter Name     ; Value            ; Type                     ;
++--------------------+------------------+--------------------------+
+; LPM_WIDTH          ; 8                ; Untyped                  ;
+; LPM_CVALUE         ; 29               ; Untyped                  ;
+; ENABLE_RUNTIME_MOD ; NO               ; Untyped                  ;
+; CBXI_PARAMETER     ; lpm_constant_8a4 ; Untyped                  ;
++--------------------+------------------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: BUSMUX:inst3 ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; WIDTH          ; 8     ; Untyped                          ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: comparator:inst26 ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; width          ; 8     ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LPM_CONSTANT:inst15 ;
++--------------------+------------------+--------------------------+
+; Parameter Name     ; Value            ; Type                     ;
++--------------------+------------------+--------------------------+
+; LPM_WIDTH          ; 8                ; Untyped                  ;
+; LPM_CVALUE         ; 29               ; Untyped                  ;
+; ENABLE_RUNTIME_MOD ; NO               ; Untyped                  ;
+; CBXI_PARAMETER     ; lpm_constant_8a4 ; Untyped                  ;
++--------------------+------------------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: BUSMUX:inst4 ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; WIDTH          ; 8     ; Untyped                          ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: comparator:inst27 ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; width          ; 8     ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LPM_CONSTANT:inst13 ;
++--------------------+------------------+--------------------------+
+; Parameter Name     ; Value            ; Type                     ;
++--------------------+------------------+--------------------------+
+; LPM_WIDTH          ; 8                ; Untyped                  ;
+; LPM_CVALUE         ; 29               ; Untyped                  ;
+; ENABLE_RUNTIME_MOD ; NO               ; Untyped                  ;
+; CBXI_PARAMETER     ; lpm_constant_8a4 ; Untyped                  ;
++--------------------+------------------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: BUSMUX:inst5 ;
++----------------+-------+----------------------------------+
+; Parameter Name ; Value ; Type                             ;
++----------------+-------+----------------------------------+
+; WIDTH          ; 8     ; Untyped                          ;
++----------------+-------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: comparator:inst28 ;
++----------------+-------+---------------------------------------+
+; Parameter Name ; Value ; Type                                  ;
++----------------+-------+---------------------------------------+
+; width          ; 8     ; Signed Integer                        ;
++----------------+-------+---------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LPM_CONSTANT:inst10 ;
++--------------------+------------------+--------------------------+
+; Parameter Name     ; Value            ; Type                     ;
++--------------------+------------------+--------------------------+
+; LPM_WIDTH          ; 8                ; Untyped                  ;
+; LPM_CVALUE         ; 29               ; Untyped                  ;
+; ENABLE_RUNTIME_MOD ; NO               ; Untyped                  ;
+; CBXI_PARAMETER     ; lpm_constant_8a4 ; Untyped                  ;
++--------------------+------------------+--------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: incrementer:inst29 ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; width          ; 8     ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LPM_CONSTANT:inst6 ;
++--------------------+------------------+-------------------------+
+; Parameter Name     ; Value            ; Type                    ;
++--------------------+------------------+-------------------------+
+; LPM_WIDTH          ; 8                ; Untyped                 ;
+; LPM_CVALUE         ; 10               ; Untyped                 ;
+; ENABLE_RUNTIME_MOD ; NO               ; Untyped                 ;
+; CBXI_PARAMETER     ; lpm_constant_4a4 ; Untyped                 ;
++--------------------+------------------+-------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LPM_CONSTANT:inst7 ;
++--------------------+------------------+-------------------------+
+; Parameter Name     ; Value            ; Type                    ;
++--------------------+------------------+-------------------------+
+; LPM_WIDTH          ; 8                ; Untyped                 ;
+; LPM_CVALUE         ; 11               ; Untyped                 ;
+; ENABLE_RUNTIME_MOD ; NO               ; Untyped                 ;
+; CBXI_PARAMETER     ; lpm_constant_5a4 ; Untyped                 ;
++--------------------+------------------+-------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LPM_CONSTANT:inst8 ;
++--------------------+------------------+-------------------------+
+; Parameter Name     ; Value            ; Type                    ;
++--------------------+------------------+-------------------------+
+; LPM_WIDTH          ; 8                ; Untyped                 ;
+; LPM_CVALUE         ; 23               ; Untyped                 ;
+; ENABLE_RUNTIME_MOD ; NO               ; Untyped                 ;
+; CBXI_PARAMETER     ; lpm_constant_r84 ; Untyped                 ;
++--------------------+------------------+-------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LPM_CONSTANT:inst9 ;
++--------------------+------------------+-------------------------+
+; Parameter Name     ; Value            ; Type                    ;
++--------------------+------------------+-------------------------+
+; LPM_WIDTH          ; 8                ; Untyped                 ;
+; LPM_CVALUE         ; 27               ; Untyped                 ;
+; ENABLE_RUNTIME_MOD ; NO               ; Untyped                 ;
+; CBXI_PARAMETER     ; lpm_constant_6a4 ; Untyped                 ;
++--------------------+------------------+-------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_lcell_comb     ; 1                           ;
+;     normal            ; 1                           ;
+;         0 data inputs ; 1                           ;
+; boundary_port         ; 9                           ;
+;                       ;                             ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Elaboration
+Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Thu May 06 01:27:18 2021
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off task_2 -c top --analysis_and_elaboration
+    Info: Processing started: Sat May 22 18:06:56 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off task_2 -c top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file top.bdf
@@ -174,17 +514,62 @@ Info (12021): Found 2 design units, including 1 entities, in source file increme
     Info (12022): Found design unit 1: incrementer-behav File: C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/2/quartus_poject1/incrementer.vhd Line: 18
     Info (12023): Found entity 1: incrementer File: C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/2/quartus_poject1/incrementer.vhd Line: 5
 Info (12127): Elaborating entity "top" for the top level hierarchy
-Error (275024): Width mismatch in port "D" of instance "inst" and type DFF -- source is ""result[7..0]" (ID BUSMUX:inst2)"
-Error (275024): Width mismatch in port "a[7..0]" of instance "inst25" and type comparator -- source is ""Q" (ID DFF:inst)"
-Error (275024): Width mismatch in port "a[7..0]" of instance "inst26" and type comparator -- source is ""Q" (ID DFF:inst)"
-Error (275024): Width mismatch in port "a[7..0]" of instance "inst27" and type comparator -- source is ""Q" (ID DFF:inst)"
-Error (275024): Width mismatch in port "a[7..0]" of instance "inst28" and type comparator -- source is ""Q" (ID DFF:inst)"
-Error (275024): Width mismatch in port "a[7..0]" of instance "inst29" and type incrementer -- source is ""Q" (ID DFF:inst)"
-Error (12153): Can't elaborate top-level user hierarchy
-Error: Quartus Prime Analysis & Elaboration was unsuccessful. 7 errors, 1 warning
-    Error: Peak virtual memory: 4859 megabytes
-    Error: Processing ended: Thu May 06 01:27:33 2021
-    Error: Elapsed time: 00:00:15
-    Error: Total CPU time (on all processors): 00:00:31
+Info (12128): Elaborating entity "BUSMUX" for hierarchy "BUSMUX:inst2"
+Info (12130): Elaborated megafunction instantiation "BUSMUX:inst2"
+Info (12133): Instantiated megafunction "BUSMUX:inst2" with the following parameter:
+    Info (12134): Parameter "WIDTH" = "8"
+Info (12128): Elaborating entity "lpm_mux" for hierarchy "BUSMUX:inst2|lpm_mux:$00000" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/busmux.tdf Line: 44
+Info (12131): Elaborated megafunction instantiation "BUSMUX:inst2|lpm_mux:$00000", which is child of megafunction instantiation "BUSMUX:inst2" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/busmux.tdf Line: 44
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_0kc.tdf
+    Info (12023): Found entity 1: mux_0kc File: C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/2/quartus_poject1/db/mux_0kc.tdf Line: 23
+Info (12128): Elaborating entity "mux_0kc" for hierarchy "BUSMUX:inst2|lpm_mux:$00000|mux_0kc:auto_generated" File: c:/intelfpga_lite/20.1/quartus/libraries/megafunctions/lpm_mux.tdf Line: 87
+Info (12128): Elaborating entity "comparator" for hierarchy "comparator:inst25"
+Info (12128): Elaborating entity "LPM_CONSTANT" for hierarchy "LPM_CONSTANT:inst17"
+Info (12130): Elaborated megafunction instantiation "LPM_CONSTANT:inst17"
+Info (12133): Instantiated megafunction "LPM_CONSTANT:inst17" with the following parameter:
+    Info (12134): Parameter "LPM_CVALUE" = "29"
+    Info (12134): Parameter "LPM_WIDTH" = "8"
+Info (12128): Elaborating entity "incrementer" for hierarchy "incrementer:inst29"
+Info (12128): Elaborating entity "LPM_CONSTANT" for hierarchy "LPM_CONSTANT:inst6"
+Info (12130): Elaborated megafunction instantiation "LPM_CONSTANT:inst6"
+Info (12133): Instantiated megafunction "LPM_CONSTANT:inst6" with the following parameter:
+    Info (12134): Parameter "LPM_CVALUE" = "10"
+    Info (12134): Parameter "LPM_WIDTH" = "8"
+Info (12128): Elaborating entity "LPM_CONSTANT" for hierarchy "LPM_CONSTANT:inst7"
+Info (12130): Elaborated megafunction instantiation "LPM_CONSTANT:inst7"
+Info (12133): Instantiated megafunction "LPM_CONSTANT:inst7" with the following parameter:
+    Info (12134): Parameter "LPM_CVALUE" = "11"
+    Info (12134): Parameter "LPM_WIDTH" = "8"
+Info (12128): Elaborating entity "LPM_CONSTANT" for hierarchy "LPM_CONSTANT:inst8"
+Info (12130): Elaborated megafunction instantiation "LPM_CONSTANT:inst8"
+Info (12133): Instantiated megafunction "LPM_CONSTANT:inst8" with the following parameter:
+    Info (12134): Parameter "LPM_CVALUE" = "23"
+    Info (12134): Parameter "LPM_WIDTH" = "8"
+Info (12128): Elaborating entity "LPM_CONSTANT" for hierarchy "LPM_CONSTANT:inst9"
+Info (12130): Elaborated megafunction instantiation "LPM_CONSTANT:inst9"
+Info (12133): Instantiated megafunction "LPM_CONSTANT:inst9" with the following parameter:
+    Info (12134): Parameter "LPM_CVALUE" = "27"
+    Info (12134): Parameter "LPM_WIDTH" = "8"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "state_o[7]" is stuck at GND
+    Warning (13410): Pin "state_o[6]" is stuck at GND
+    Warning (13410): Pin "state_o[5]" is stuck at GND
+    Warning (13410): Pin "state_o[4]" is stuck at GND
+    Warning (13410): Pin "state_o[3]" is stuck at GND
+    Warning (13410): Pin "state_o[2]" is stuck at GND
+    Warning (13410): Pin "state_o[1]" is stuck at GND
+    Warning (13410): Pin "state_o[0]" is stuck at GND
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk"
+Info (21057): Implemented 9 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 8 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12 warnings
+    Info: Peak virtual memory: 4879 megabytes
+    Info: Processing ended: Sat May 22 18:07:15 2021
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:34
 
 

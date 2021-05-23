@@ -4,14 +4,14 @@ use ieee.numeric_std.all;
 
 entity incrementer is
 
-	--generic (
-	--	width : natural := 8 -- input signal width
-	--);
+	generic (
+		width : natural := 8 
+	);
 
 	port 
 	(
-		a	    : in std_logic_vector (7 downto 0);
-		result : out std_logic_vector (7 downto 0)
+		a	    : in std_logic_vector (width - 1 downto 0);
+		result : out std_logic_vector (width - 1 downto 0)
 	);
 end entity;
 

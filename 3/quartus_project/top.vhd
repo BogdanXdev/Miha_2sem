@@ -14,7 +14,7 @@ end entity;
 
 architecture rtl of top is
 
-    signal state_reg : std_logic_vector (7 downto 0);
+    signal state_reg : std_logic_vector (7 downto 0) ;
     signal state_next : std_logic_vector (7 downto 0);
 
 begin
@@ -22,7 +22,7 @@ begin
     --register with async reset
     process (all) begin
         if (rst_in = '1') then
-            state_reg <= (others => '0');
+            state_reg <= x"12";
         elsif (rising_edge(clk_in)) then
             state_reg <= state_next;
         end if;

@@ -23,13 +23,13 @@ enable_in => state_reg[3].ENA
 enable_in => state_reg[2].ENA
 enable_in => state_reg[1].ENA
 enable_in => state_reg[0].ENA
-state_out[0] <= state_reg[0].DB_MAX_OUTPUT_PORT_TYPE
-state_out[1] <= state_reg[1].DB_MAX_OUTPUT_PORT_TYPE
-state_out[2] <= state_reg[2].DB_MAX_OUTPUT_PORT_TYPE
-state_out[3] <= state_reg[3].DB_MAX_OUTPUT_PORT_TYPE
-state_out[4] <= state_reg[4].DB_MAX_OUTPUT_PORT_TYPE
-state_out[5] <= state_reg[5].DB_MAX_OUTPUT_PORT_TYPE
-state_out[6] <= state_reg[6].DB_MAX_OUTPUT_PORT_TYPE
-state_out[7] <= state_reg[7].DB_MAX_OUTPUT_PORT_TYPE
+state_out[0] << state_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+state_out[1] << state_reg[1].DB_MAX_OUTPUT_PORT_TYPE
+state_out[2] << state_reg[2].DB_MAX_OUTPUT_PORT_TYPE
+state_out[3] << state_reg[3].DB_MAX_OUTPUT_PORT_TYPE
+state_out[4] << state_reg[4].DB_MAX_OUTPUT_PORT_TYPE
+state_out[5] << state_reg[5].DB_MAX_OUTPUT_PORT_TYPE
+state_out[6] << state_reg[6].DB_MAX_OUTPUT_PORT_TYPE
+state_out[7] << state_reg[7].DB_MAX_OUTPUT_PORT_TYPE
 
 

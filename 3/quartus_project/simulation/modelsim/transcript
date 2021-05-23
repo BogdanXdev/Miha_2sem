@@ -1,87 +1,27 @@
-# Compile of top.vhd failed with 2 errors.
-# Compile of top_tb.vhd was successful.
-# 2 compiles, 1 failed with 2 errors.
-# Compile of top.vhd was successful with warnings.
-# Compile of top_tb.vhd was successful.
-# 2 compiles, 0 failed with no errors.
-vsim top_tb
-# vsim top_tb 
-# Start time: 14:50:01 on May 08,2021
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.top_tb(sim)
-# Loading work.top(rtl)
-add wave -position end  sim:/top_tb/clk_tb
-add wave -position end  sim:/top_tb/rst_tb
-add wave -position end  sim:/top_tb/enable_tb
-add wave -position end  sim:/top_tb/state_out_tb
-run -all
-run
-run 1ms
-# WARNING: No extended dataflow license exists
+# Compile of qntr_tb.vhd was successful.
 # Compile of top.vhd was successful.
 # Compile of top_tb.vhd was successful.
-# 2 compiles, 0 failed with no errors.
+# Compile of util_pckg.vhd was successful.
+# 4 compiles, 0 failed with no errors.
 vsim top_tb
-# End time: 14:59:05 on May 08,2021, Elapsed time: 0:09:04
-# Errors: 0, Warnings: 8
 # vsim top_tb 
-# Start time: 14:59:05 on May 08,2021
+# Start time: 02:39:18 on May 24,2021
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
+# Loading work.util_pckg(body)
 # Loading work.top_tb(sim)
 # Loading work.top(rtl)
-run 1ms
-add wave -position end  sim:/top_tb/clk_tb
-add wave -position end  sim:/top_tb/rst_tb
-add wave -position end  sim:/top_tb/enable_tb
-add wave -position end  sim:/top_tb/state_out_tb
-run 1ms
+# Loading work.qntr_tb(behav)
+add wave -position insertpoint sim:/top_tb/*
+add wave -position insertpoint  \
+sim:/top_tb/enable_cntr/counter
 run
-vsim -t 1ms top_tb 
-# End time: 15:00:40 on May 08,2021, Elapsed time: 0:01:35
-# Errors: 0, Warnings: 1
-# vsim -t 1ms top_tb 
-# Start time: 15:00:40 on May 08,2021
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.top_tb(sim)
-# ** Warning: (vsim-3479) Time unit 'ns' is less than the simulator resolution (1ms).
-#    Time: 0 ms  Iteration: 0  Root: /
-# Loading work.top(rtl)
-add wave -position end  sim:/top_tb/clk_tb
-add wave -position end  sim:/top_tb/rst_tb
-add wave -position end  sim:/top_tb/enable_tb
-add wave -position end  sim:/top_tb/state_out_tb
-run
-# ** Fatal: (vsim-3483) Delay in signal assignment is not ascending.
-#    Time: 0 ms  Iteration: 0  Process: /top_tb/line__20 File: C:/code/miha_2sem/3/quartus_project/top_tb.vhd Line: 20
-# Fatal error in Architecture sim at C:/code/miha_2sem/3/quartus_project/top_tb.vhd line 20
-# 
-# HDL call sequence:
-# Stopped at C:/code/miha_2sem/3/quartus_project/top_tb.vhd 20 Architecture sim
-# 
-vsim top_tb
-# End time: 15:01:31 on May 08,2021, Elapsed time: 0:00:51
-# Errors: 1, Warnings: 2
-# vsim top_tb 
-# Start time: 15:01:31 on May 08,2021
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.top_tb(sim)
-# Loading work.top(rtl)
-add wave -position end  sim:/top_tb/clk_tb
-add wave -position end  sim:/top_tb/rst_tb
-add wave -position end  sim:/top_tb/enable_tb
-add wave -position end  sim:/top_tb/state_out_tb
-run -all
-# End time: 15:03:24 on May 08,2021, Elapsed time: 0:01:53
-# Errors: 0, Warnings: 1
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 0 ps  Iteration: 0  Instance: /top_tb/enable_cntr
+add wave -position insertpoint sim:/top_tb/*
+add wave -position insertpoint  \
+sim:/top_tb/enable_cntr/counter
+# End time: 02:44:34 on May 24,2021, Elapsed time: 0:05:16
+# Errors: 0, Warnings: 3
