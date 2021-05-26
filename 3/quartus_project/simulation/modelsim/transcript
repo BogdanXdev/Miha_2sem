@@ -5,7 +5,7 @@
 # 4 compiles, 0 failed with no errors.
 vsim top_tb
 # vsim top_tb 
-# Start time: 02:39:18 on May 24,2021
+# Start time: 00:46:00 on May 27,2021
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -14,14 +14,12 @@ vsim top_tb
 # Loading work.top_tb(sim)
 # Loading work.top(rtl)
 # Loading work.qntr_tb(behav)
-add wave -position insertpoint sim:/top_tb/*
+add wave -position insertpoint sim:/top_tb/dut/*
 add wave -position insertpoint  \
 sim:/top_tb/enable_cntr/counter
 run
 # ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
 #    Time: 0 ps  Iteration: 0  Instance: /top_tb/enable_cntr
-add wave -position insertpoint sim:/top_tb/*
-add wave -position insertpoint  \
-sim:/top_tb/enable_cntr/counter
-# End time: 02:44:34 on May 24,2021, Elapsed time: 0:05:16
+# WARNING: No extended dataflow license exists
+# End time: 00:54:21 on May 27,2021, Elapsed time: 0:08:21
 # Errors: 0, Warnings: 3

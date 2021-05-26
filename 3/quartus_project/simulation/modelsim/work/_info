@@ -15,7 +15,7 @@ Z1 DPx4 work 9 util_pckg 0 22 ``8DAcR4R8CM2LFz^TjiW1
 Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 88
+!i122 92
 Z5 dC:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/simulation/modelsim
 Z6 8C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/qntr_tb.vhd
 Z7 FC:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/qntr_tb.vhd
@@ -25,9 +25,9 @@ VG_ffN9=U9@Y=kHoFjKG<m0
 !s100 iI58][^FCLdeaO:9[[g9W0
 Z8 OV;C;2020.1;71
 33
-Z9 !s110 1621813150
+Z9 !s110 1622065548
 !i10b 1
-Z10 !s108 1621813150.000000
+Z10 !s108 1622065547.000000
 Z11 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/qntr_tb.vhd|
 Z12 !s107 C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/qntr_tb.vhd|
 !i113 1
@@ -39,7 +39,7 @@ R2
 R3
 R4
 Z15 DEx4 work 7 qntr_tb 0 22 G_ffN9=U9@Y=kHoFjKG<m0
-!i122 88
+!i122 92
 l22
 L18 29
 VAA6mAL8bo5?4SGQ:7:J[n1
@@ -55,11 +55,11 @@ R12
 R13
 R14
 Etop
-Z16 w1621812786
+Z16 w1621813391
 R2
 R3
 R4
-!i122 89
+!i122 93
 R5
 Z17 8C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top.vhd
 Z18 FC:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top.vhd
@@ -71,9 +71,9 @@ R8
 33
 R9
 !i10b 1
-R10
-Z19 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top.vhd|
-Z20 !s107 C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top.vhd|
+Z19 !s108 1622065548.000000
+Z20 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top.vhd|
+Z21 !s107 C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top.vhd|
 !i113 1
 R13
 R14
@@ -81,31 +81,31 @@ Artl
 R2
 R3
 R4
-Z21 DEx4 work 3 top 0 22 eMXMeJJ3U[O5B>8AeXen_2
-!i122 89
+Z22 DEx4 work 3 top 0 22 eMXMeJJ3U[O5B>8AeXen_2
+!i122 93
 l20
 L15 42
-Vm4Uh=?1<kI3lDPOe2`6P80
-!s100 acbfNZkO9c:lcdfHaXkzE0
+V`?NiG_B7YjVSBg_KN?J0h1
+!s100 h7:kn[bmki:4lfO:G`Rbz3
 R8
 33
 R9
 !i10b 1
-R10
 R19
 R20
+R21
 !i113 1
 R13
 R14
 Etop_tb
-Z22 w1620853386
+Z23 w1620853386
 R2
 R3
 R4
-!i122 90
+!i122 94
 R5
-Z23 8C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top_tb.vhd
-Z24 FC:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top_tb.vhd
+Z24 8C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top_tb.vhd
+Z25 FC:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top_tb.vhd
 l0
 L5 1
 VPWV[YZB<]`lU:@9N6fk992
@@ -114,21 +114,21 @@ R8
 33
 R9
 !i10b 1
-R10
-Z25 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top_tb.vhd|
-Z26 !s107 C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top_tb.vhd|
+R19
+Z26 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top_tb.vhd|
+Z27 !s107 C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/top_tb.vhd|
 !i113 1
 R13
 R14
 Asim
 R1
 R15
-R21
+R22
 R2
 R3
 R4
 DEx4 work 6 top_tb 0 22 PWV[YZB<]`lU:@9N6fk992
-!i122 90
+!i122 94
 l16
 L8 32
 V>YYV:12FUF6?EUzPjfZ^G1
@@ -137,9 +137,9 @@ R8
 33
 R9
 !i10b 1
-R10
-R25
+R19
 R26
+R27
 !i113 1
 R13
 R14
@@ -147,11 +147,11 @@ Putil_pckg
 R2
 R3
 R4
-!i122 91
-Z27 w1620770375
+!i122 95
+Z28 w1620770375
 R5
-Z28 8C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/util_pckg.vhd
-Z29 FC:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/util_pckg.vhd
+Z29 8C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/util_pckg.vhd
+Z30 FC:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/util_pckg.vhd
 l0
 L4 1
 V``8DAcR4R8CM2LFz^TjiW1
@@ -159,9 +159,9 @@ V``8DAcR4R8CM2LFz^TjiW1
 R8
 33
 b1
-Z30 !s110 1621813151
+R9
 !i10b 1
-R10
+R19
 Z31 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/util_pckg.vhd|
 Z32 !s107 C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha_2sem/3/quartus_project/util_pckg.vhd|
 !i113 1
@@ -172,16 +172,16 @@ R1
 R2
 R3
 R4
-!i122 91
+!i122 95
 l0
 L8 1
 Z33 V@O=?nF4fW]YN4XK4UD7D^3
 Z34 !s100 PR:BLEPoE5gXa_nBTT1^M3
 R8
 33
-R30
+R9
 !i10b 1
-R10
+R19
 R31
 R32
 !i113 1
