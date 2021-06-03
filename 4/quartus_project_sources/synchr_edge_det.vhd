@@ -9,7 +9,7 @@ entity synchr_edge_det is
         in_async : in std_logic;
         en_out : out std_logic
     );
-end entity;
+end synchr_edge_det;
 
 architecture rtl of synchr_edge_det is
 
@@ -22,13 +22,14 @@ architecture rtl of synchr_edge_det is
 
 begin
 
-    process (all) begin
-        if (reset =  '1') then
+    process (all) 
+    begin
+        if reset = '1' then
             meta_reg <= '0';
             sync_reg <= '0';
             edge_det_reg <= '0';
         elsif rising_edge(clk) then
-            meta_redg <= meta_next;
+            meta_reg <= meta_next;
             sync_reg <= sync_next;
             edge_det_reg <= edge_det_next;
         end if;
@@ -42,4 +43,4 @@ begin
     edge_det_next <= sync_reg;
     en_out <= (not edge_det_reg) and edge_det_next;
 
-end architecture;
+end rtl;
