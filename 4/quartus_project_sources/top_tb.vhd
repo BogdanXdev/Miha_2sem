@@ -31,10 +31,9 @@ architecture sim of top_tb is
     signal fast_clk_tb : std_logic := '0';
     signal clk_tb : std_logic := '0';
     signal rst_tb : std_logic := '0';
-    signal enable_tb : std_logic := '0';
     signal state_out_tb : std_logic_vector (7 downto 0);
     signal async_tb : std_logic := '0';
-    signal button_pattern : std_logic_vector(10 downto 0);
+    signal button_pattern : std_logic_vector(9 downto 0);
 
     constant half_period : natural := 15;
     constant fast_half_period : natural := 2; -- for button imitation
@@ -45,17 +44,16 @@ begin
     clk_tb <= not clk_tb after half_period * 1 ns;
     rst_tb <= '1' after half_period * 1 ns, '0' after half_period * 8 ns;
 
-    async_button_pattern : process (all)
-    begin
-        button_pattern <= rand_slv(10);
-    end process async_button_pattern;
-
+    button_pattern <= rand_slv(10);
+    
     button_imitation : process
     begin
         for i in button_pattern'range loop
             async_tb <= button_pattern(i);
             wait for fast_half_period * 2 ns;
         end loop;
+        async_tb <= '1';
+        wait for fast_half_period * 50 ns;
         async_tb <= '0';
         wait for fast_half_period * 200 ns;
     end process button_imitation;
