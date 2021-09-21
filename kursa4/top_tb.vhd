@@ -6,85 +6,106 @@ end entity;
 
 architecture i2c_controller_top_tb is
 
-    signal clk_tb : std_logic := '0';
-    signal rst_tb : std_logic := '0';
-    signal wr_tb : std_logic;
-    signal rd_tb : std_logic;
-    signal SCL_tb : std_logic;
-    signal SDA_tb : std_logic;
+    -- i2c controller interface
+    signal clk_tb : std_logic := '0';                           --signal driven by tb
+    signal rst_tb : std_logic := '0';                           --signal driven by tb
+    signal wr_tb : std_logic;                                   --signal driven by tb
+    signal rd_tb : std_logic;                                   --signal driven by tb
+    signal SCL_tb : std_logic;                          --signal driven by controller
+    signal SDA_tb : std_logic;                          --signal driven by controller
+    signal write_data_tb : std_logic_vector(7 downto 0);        --signal driven by tb
+    signal read_data_tb : std_logic_vector(7 downto 0); --signal driven by controller
 
-    -- signals for data patterns and their storage 
-    signal write_data : std_logic_vector(7 downto 0) := "11100010";
+    constant half_period : integer := 20;
 
-    signal store_data_after_read_next : std_logic_vector(7 downto 0);
-    signal store_data_after_read_reg : std_logic_vector(7 downto 0);
+    --  slave emulation
+    constant SLAVE_ADDRESS : std_logic_vector(6 downto 0) := "0110101";
+    -- 7 bits for data because 1 bit reserved for write/read command
+    signal CR0 : std_logic_vector(6 downto 0);          -- slave' 0 config register
+    signal CR1 : std_logic_vector(6 downto 0);          -- slave' 1 config register
+    signal CR2 : std_logic_vector(6 downto 0);          -- slave' 2 config register
+    signal CR0_next : std_logic_vector(6 downto 0);
+    signal CR1_next : std_logic_vector(6 downto 0);
+    signal CR2_next : std_logic_vector(6 downto 0);
+    signal data_for_CR0 : std_logic_vector(6 downto 0) := "0000001";
+    signal data_for_CR1 : std_logic_vector(6 downto 0) := "1000000";
+    signal data_for_CR2 : std_logic_vector(6 downto 0) := "1111110";
 
-    -- 3 slaves addresses array
-    signal slaves_addresses_array is array (3 donwto 0)
-    of std_logic_vector(7 downto 0) :=
-    ("00000001", "00000010", "00000100");
-    signal read_slave0_data_array is array (2 downto 0)
-    of std_logic_vector(7 downto 0) :=
-    ("11110000", "11001100", "00110011");
+    -- Registers to store read results and make comparison
+    signal CompareReg0 : std_logic_vector(6 downto 0);
+    signal CompareReg1 : std_logic_vector(6 downto 0);
+    signal CompareReg2 : std_logic_vector(6 downto 0);
+    signal CompareReg0_next : std_logic_vector(6 downto 0);
+    signal CompareReg1_next : std_logic_vector(6 downto 0);
+    signal CompareReg2_next : std_logic_vector(6 downto 0);
+    signal start_the_comparison : std_logic;
 
-    -- emulating slave0. slave0 has its own address and 3 addresses inside it
-    --      (in memory mapped manner)
-    -- signal read_slave0_addresses_array is array (2 downto 0)
-    -- of std_logic_vector(7 downto 0) :=
-    -- (x"08", x"0F", x"80");
-    -- signal read_slave0_data_array is array (2 downto 0)
-    -- of std_logic_vector(7 downto 0) :=
-    -- ("11110000", "11001100", "00110011");
+    constant 3_REGS_WRITE : integer :=  ;   -- need to precise how mcuh 
+    constant 3_REGS_READ : integer :=  ; 
 
-    signal address_on_bus : std_logic_vector(7 downto 0);
-    signal reg_address_on_bus : std_logic_vector(7 downto 0);
+    begin
 
-    --counters for controlling FSM state timings purposes
-    signal counter0 : unsigned (15 downto 0);
-    signal counter1 : unsigned (15 downto 0);
-    signal counter2 : unsigned (15 downto 0);
+    regs : process (all)
+    begin
+        if rising_edge(clk_tb) then
+            if rst_tb = '1' then
+                CR0 <= (others => '0');
+                CR1 <= (others => '0');
+                CR2 <= (others => '0');
+                CompareReg0 <= (others => '0');
+                CompareReg1 <= (others => '0');
+                CompareReg2 <= (others => '0');
+            else
+                CR0 <= CR0_next;
+                CR1 <= CR1_next;
+                CR2 <= CR2_next;
+                CompareReg0 <= CompareReg0_next; 
+                CompareReg1 <= CompareReg1_next;
+                CompareReg2 <= CompareReg2_next;
+            end if;
+        end if;
+    end process regs;
 
-    constant half_period : natural := 100; -- ns
-    constant clock_stretch : natural := 4;
-
-begin
-
+    -- stimuli generator 
     -- clk and rst gen
     clk_tb <= not clk_tb after half_period * 1 ns;
     rst_tb <= '1', '0' after 20 * half_period * 1 ns;
 
-    regs : process (clk_tb, rst_tb)
+    write_and_read_sequence: process 
     begin
-        if rst_tb = '0' then
-            store_data_after_read_reg <= (others => '0');
-        elsif rising_edge(clk_tb) then
-            store_data_after_read_reg <= store_data_after_read_next;
-        end if;
-    end regs;
-
-    -- read data pattern 
-    -- read data store 
-    -- master  
-
-    slaves : process (all)
+        wr_tb <= '0';
+        rd_tb <= '0';
+        wait until rst_tb = '0';
+        wr_tb <= '1'; 
+        wait for 3_REGS_WRITE * half_period * 2 ns;
+        wr_tb <= '0'; 
+        rd_tb <= '1';
+        wait for 3_REGS_READ * half_period * 2 ns;
+        wr_tb <= '0'; 
+        rd_tb <= '0';
+        start_the_comparison <= '1';
+        wait;
+    end process write_and_read_sequence;
+    
+    write_Data_sended_to_i2c_controller: process
     begin
-        case address_on_bus is
-            when slaves_addresses_array(0) =>
-                
-                -- clock stretch
-            when slaves_addresses_array(1) =>
+        
+    end process write_Data_sended_to_i2c_controller;
 
-            when slaves_addresses_array(2) =>
-
-            when others =>
-
-        end case;
-    end process slaves;
-
-    -- be sure of what is going on i2c bus
-
-    timings_fsm : process (sensitivity_list)
+    -- template generator
+    read_register_to_comparison_reg_copying: process
     begin
+        wait until first_read_pack_intrance = '1';
+        CompareReg0_next <= read_data_tb  ;
+        wait until second_read_pack_intrance = '1';
+        CompareReg1_next <= read_data_tb  ;
+        wait until third_read_pack_intrance = '1';
+        CompareReg2_next <= read_data_tb  ;
+    end process read_register_to_comparison_reg_copying;
 
-    end process fsm_with_counters;
+    -- comparison module 
+    write_Data_and_comparison_registers_check: process
+    begin
+        assert report ...
+    end process write_Data_and_comparison_registers_check;
 end architecture;
