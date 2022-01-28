@@ -1,0 +1,277 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "done",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[0]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[1]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[2]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[3]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[4]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[5]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[6]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[7]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[8]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[9]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[10]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[11]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[12]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[13]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[14]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[15]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[0]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[1]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[2]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[3]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[4]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[5]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[6]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[7]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[8]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[9]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[10]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[11]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[12]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[13]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[14]",
+					"strict" : false
+				},
+				{
+					"name" : "reminder[15]",
+					"strict" : false
+				},
+				{
+					"name" : "start",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[15]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[15]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[4]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[4]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[7]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[7]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[6]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[6]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[5]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[5]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[1]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[1]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[0]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[0]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[3]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[3]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[2]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[2]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[14]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[14]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[13]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[13]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[12]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[12]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[11]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[11]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[9]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[9]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[10]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[10]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[8]",
+					"strict" : false
+				},
+				{
+					"name" : "divident[8]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
