@@ -1,6 +1,0 @@
-
-State Machine - |top|state_reg
-Name state_reg.result state_reg.divide_process state_reg.new_load 
-state_reg.new_load 0 0 0 
-state_reg.divide_process 0 1 1 
-state_reg.result 1 0 1 
