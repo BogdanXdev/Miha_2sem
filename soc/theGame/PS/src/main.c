@@ -14,7 +14,8 @@ primitive object_2[3]= {{200,0,10},{200,10,10},{200,20,10}};
 primitive* frame[]= {object_0, object_1, object_2}; 
 
 void object_movement ();
-void collission_detec ();
+void collision_detec ();
+void button_get ();
 
 void main()
 {

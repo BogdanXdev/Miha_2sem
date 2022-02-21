@@ -75,7 +75,7 @@ begin
                 state_next   <= writing;
                 pointer_next <= std_logic_vector(unsigned(pointer_reg) + to_unsigned(1, 8));
                 SDA          <= 'Z';
-                CR0_next <= (others => '0');
+                CR0_next <= CR0_reg;
                 case pointer is
                     when 2 to 8 =>
                         -- slave address check
@@ -98,7 +98,6 @@ begin
                         SDA <= '0';
                     when 11 to 18 => 
                         -- writing to reg
-                        CR0_next <= CR0_reg;
                         CR0_next(18 - pointer) <= SDA;
                     when 19 =>
                         --ack 

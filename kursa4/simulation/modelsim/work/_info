@@ -1,0 +1,142 @@
+m255
+K4
+z2
+!s11e MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Bogdan/Desktop/MIHA_2SEM/Miha2sem/kursa4/simulation/modelsim
+Eslave
+Z0 w1632752506
+Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 208
+Z4 dC:/code/miha/kursa4/simulation/modelsim
+Z5 8C:/code/miha/kursa4/slave.vhd
+Z6 FC:/code/miha/kursa4/slave.vhd
+l0
+L5 1
+Vj7eKQa;P^Km?8B^B3<4Cd3
+!s100 icmA;UYG0=?>S97=S7PiX1
+Z7 OV;C;2020.1;71
+33
+Z8 !s110 1632752512
+!i10b 1
+Z9 !s108 1632752512.000000
+Z10 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/code/miha/kursa4/slave.vhd|
+Z11 !s107 C:/code/miha/kursa4/slave.vhd|
+!i113 1
+Z12 o-work work -2008 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Abehav
+R1
+R2
+R3
+Z14 DEx4 work 5 slave 0 22 j7eKQa;P^Km?8B^B3<4Cd3
+!i122 208
+l27
+L15 98
+V2D7jf1O?oP38]3EK<Xfz[0
+!s100 D_773P=n`jT1_fPMnb>QF1
+R7
+33
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Etop
+Z15 w1632752027
+R1
+R2
+R3
+!i122 209
+R4
+Z16 8C:/code/miha/kursa4/top.vhd
+Z17 FC:/code/miha/kursa4/top.vhd
+l0
+L5 1
+V9HKDiR4jibGnaXEf;6oaf2
+!s100 fdD8lZ2o9k3DgJk[1K81M3
+R7
+33
+Z18 !s110 1632752513
+!i10b 1
+Z19 !s108 1632752513.000000
+Z20 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/code/miha/kursa4/top.vhd|
+Z21 !s107 C:/code/miha/kursa4/top.vhd|
+!i113 1
+R12
+R13
+Ai2c_controller_behav
+R1
+R2
+R3
+Z22 DEx4 work 3 top 0 22 9HKDiR4jibGnaXEf;6oaf2
+!i122 209
+l30
+L19 206
+VFW]D_4=cAaDT`>NJ_[e0g3
+!s100 j9VAbC^gicaTQKQL^l>943
+R7
+33
+R18
+!i10b 1
+R19
+R20
+R21
+!i113 1
+R12
+R13
+Etop_tb
+Z23 w1632749941
+R1
+R2
+R3
+!i122 210
+R4
+Z24 8C:/code/miha/kursa4/top_tb.vhd
+Z25 FC:/code/miha/kursa4/top_tb.vhd
+l0
+L5 1
+VPWV[YZB<]`lU:@9N6fk992
+!s100 h<c9JjcQZfeAN:4;d]L082
+R7
+33
+R18
+!i10b 1
+R19
+Z26 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/code/miha/kursa4/top_tb.vhd|
+Z27 !s107 C:/code/miha/kursa4/top_tb.vhd|
+!i113 1
+R12
+R13
+Asim
+R14
+R22
+R1
+R2
+R3
+Z28 DEx4 work 6 top_tb 0 22 PWV[YZB<]`lU:@9N6fk992
+!i122 210
+l34
+Z29 L8 110
+Z30 V<P2Cze^^bea>J1Q4XL_:Y0
+Z31 !s100 `3YLnAO@R;U^k=X7;S9@00
+R7
+33
+R18
+!i10b 1
+R19
+R26
+R27
+!i113 1
+R12
+R13

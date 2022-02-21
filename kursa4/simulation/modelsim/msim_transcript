@@ -1,0 +1,26 @@
+# Reading pref.tcl
+# do I2C_controller_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vcom -2008 -work work {C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha2sem/kursa4/top.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:14:32 on Sep 26,2021
+# vcom -reportprogress 300 -2008 -work work C:/Users/Bogdan/Desktop/MIHA_2SEM/Miha2sem/kursa4/top.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity top
+# -- Compiling architecture I2C_controller_behav of top
+# End time: 23:14:32 on Sep 26,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# Loading project i2c_tb
