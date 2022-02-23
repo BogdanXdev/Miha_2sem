@@ -121,8 +121,44 @@ void pads_move()
     object_movement(pad_1, 3, _2d_vector_pad1);
 }
 
+/* utilities */
+#define _I(fmt, args...) printf(fmt "\n", ##args)
+#define _E(fmt, args...) printf("ERROR: " fmt "\n", ##args)
+/* physical address spans */
+#define LWHPS2FPGA_BASE 0xff200000 /* physical address of the LWH2F bridge */
+#define LWHPS2FPGA_SPAN 0x3000     /* address span to map */
+
 void main()
 {
+
+    int fd;                   /* file descriptor */
+    unsigned char *mem_lwh2f; /* memory pointer for LW HPS2FPGA bridge */
+
+    if ((fd = open("/dev/mem", O_RDWR | O_SYNC)) < 0)
+    {
+        _E("Failed to open \"/dev/mem\" file");
+        return -1;
+    }
+
+    _I("Mapping physical address - LWHPS2FPGA");
+    mem_lwh2f = mmap(0, LWHPS2FPGA_SPAN, PROT_READ | PROT_WRITE, MAP_SHARED, fd, LWHPS2FPGA_BASE);
+    if (mem_lwh2f == NULL)
+    {
+        _E("Failed to map \"LWHPS2FPGA\" bridge");
+        return -1;
+    }
+
+    _I("Waiting for button press..."); // 5 buttons should be implemented
+    while ((*(mem_lwh2f + 0x0000) & 0x1))
+        ; /* polling for button to be pressed */
+    while ((*(mem_lwh2f + 0x0000) & 0x1))
+        ; /* polling for button to be pressed */
+    while ((*(mem_lwh2f + 0x0000) & 0x1))
+        ; /* polling for button to be pressed */
+    while ((*(mem_lwh2f + 0x0000) & 0x1))
+        ; /* polling for button to be pressed */
+    while ((*(mem_lwh2f + 0x0000) & 0x1))
+        ; /* polling for button to be pressed */
 
     while (1)
     {
