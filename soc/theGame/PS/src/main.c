@@ -114,9 +114,24 @@ void ball_move()
     object_movement(ball, 1, _2d_vector_ball);
 }
 
+void padvector_change()
+{
+    _I("Waiting for button press..."); // 5 buttons should be implemented
+    while ((*(mem_lwh2f)&0x1))         /* polling for button to be pressed */
+        _2d_vector_pad0.y_vec = primitive_side;
+    while ((*(mem_lwh2f)&0x2))
+        _2d_vector_pad0.y_vec = primitive_side;
+    while ((*(mem_lwh2f)&0x4))
+        _2d_vector_pad1.y_vec = -primitive_side;
+    while ((*(mem_lwh2f)&0x8))
+        _2d_vector_pad1.y_vec = primitive_side;
+    while ((*(mem_lwh2f)&0x16))
+        ;
+}
+
 void pads_move()
 {
-    // poll the buttons
+    padvector_change();
     object_movement(pad_0, 3, _2d_vector_pad0);
     object_movement(pad_1, 3, _2d_vector_pad1);
 }
@@ -148,24 +163,9 @@ void main()
         return -1;
     }
 
-    _I("Waiting for button press..."); // 5 buttons should be implemented
-    while ((*(mem_lwh2f + 0x0000) & 0x1))
-        ; /* polling for button to be pressed */
-    while ((*(mem_lwh2f + 0x0000) & 0x1))
-        ; /* polling for button to be pressed */
-    while ((*(mem_lwh2f + 0x0000) & 0x1))
-        ; /* polling for button to be pressed */
-    while ((*(mem_lwh2f + 0x0000) & 0x1))
-        ; /* polling for button to be pressed */
-    while ((*(mem_lwh2f + 0x0000) & 0x1))
-        ; /* polling for button to be pressed */
-
     while (1)
     {
         // draw object()
-        // uslovije dlja knopok
-        // slovitj knopki       0000 0000 ... 0000 000f  h2f_lw_axi_master
-        // debounce
 
         pads_move();
         ball_move();
