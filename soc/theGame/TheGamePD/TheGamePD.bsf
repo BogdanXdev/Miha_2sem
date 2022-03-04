@@ -663,7 +663,7 @@ refer to the applicable agreement for further details.
 		(text "clk" (rect 385 347 788 704)(font "Arial" (color 0 0 0)))
 		(text "reset" (rect 163 1115 356 2243)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "reset_n" (rect 197 1139 436 2288)(font "Arial" (color 0 0 0)))
-		(text " TheGamePD " (rect 535 1160 1136 2330)(font "Arial" ))
+		(text " system " (rect 557 1160 1162 2330)(font "Arial" ))
 		(line (pt 192 32)(pt 400 32)(line_width 1))
 		(line (pt 400 32)(pt 400 1160)(line_width 1))
 		(line (pt 192 1160)(pt 400 1160)(line_width 1))

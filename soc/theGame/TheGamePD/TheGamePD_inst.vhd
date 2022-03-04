@@ -1,23 +1,6 @@
 	component TheGamePD is
 		port (
 			clk_clk                         : in    std_logic                     := 'X';             -- clk
-			reset_reset_n                   : in    std_logic                     := 'X';             -- reset_n
-			memory_mem_a                    : out   std_logic_vector(14 downto 0);                    -- mem_a
-			memory_mem_ba                   : out   std_logic_vector(2 downto 0);                     -- mem_ba
-			memory_mem_ck                   : out   std_logic;                                        -- mem_ck
-			memory_mem_ck_n                 : out   std_logic;                                        -- mem_ck_n
-			memory_mem_cke                  : out   std_logic;                                        -- mem_cke
-			memory_mem_cs_n                 : out   std_logic;                                        -- mem_cs_n
-			memory_mem_ras_n                : out   std_logic;                                        -- mem_ras_n
-			memory_mem_cas_n                : out   std_logic;                                        -- mem_cas_n
-			memory_mem_we_n                 : out   std_logic;                                        -- mem_we_n
-			memory_mem_reset_n              : out   std_logic;                                        -- mem_reset_n
-			memory_mem_dq                   : inout std_logic_vector(31 downto 0) := (others => 'X'); -- mem_dq
-			memory_mem_dqs                  : inout std_logic_vector(3 downto 0)  := (others => 'X'); -- mem_dqs
-			memory_mem_dqs_n                : inout std_logic_vector(3 downto 0)  := (others => 'X'); -- mem_dqs_n
-			memory_mem_odt                  : out   std_logic;                                        -- mem_odt
-			memory_mem_dm                   : out   std_logic_vector(3 downto 0);                     -- mem_dm
-			memory_oct_rzqin                : in    std_logic                     := 'X';             -- oct_rzqin
 			hps_io_hps_io_emac1_inst_TX_CLK : out   std_logic;                                        -- hps_io_emac1_inst_TX_CLK
 			hps_io_hps_io_emac1_inst_TXD0   : out   std_logic;                                        -- hps_io_emac1_inst_TXD0
 			hps_io_hps_io_emac1_inst_TXD1   : out   std_logic;                                        -- hps_io_emac1_inst_TXD1
@@ -70,7 +53,22 @@
 			hps_io_hps_io_i2c0_inst_SCL     : inout std_logic                     := 'X';             -- hps_io_i2c0_inst_SCL
 			hps_io_hps_io_i2c1_inst_SDA     : inout std_logic                     := 'X';             -- hps_io_i2c1_inst_SDA
 			hps_io_hps_io_i2c1_inst_SCL     : inout std_logic                     := 'X';             -- hps_io_i2c1_inst_SCL
-			pio_in_export                   : in    std_logic_vector(4 downto 0)  := (others => 'X'); -- export
+			memory_mem_a                    : out   std_logic_vector(14 downto 0);                    -- mem_a
+			memory_mem_ba                   : out   std_logic_vector(2 downto 0);                     -- mem_ba
+			memory_mem_ck                   : out   std_logic;                                        -- mem_ck
+			memory_mem_ck_n                 : out   std_logic;                                        -- mem_ck_n
+			memory_mem_cke                  : out   std_logic;                                        -- mem_cke
+			memory_mem_cs_n                 : out   std_logic;                                        -- mem_cs_n
+			memory_mem_ras_n                : out   std_logic;                                        -- mem_ras_n
+			memory_mem_cas_n                : out   std_logic;                                        -- mem_cas_n
+			memory_mem_we_n                 : out   std_logic;                                        -- mem_we_n
+			memory_mem_reset_n              : out   std_logic;                                        -- mem_reset_n
+			memory_mem_dq                   : inout std_logic_vector(31 downto 0) := (others => 'X'); -- mem_dq
+			memory_mem_dqs                  : inout std_logic_vector(3 downto 0)  := (others => 'X'); -- mem_dqs
+			memory_mem_dqs_n                : inout std_logic_vector(3 downto 0)  := (others => 'X'); -- mem_dqs_n
+			memory_mem_odt                  : out   std_logic;                                        -- mem_odt
+			memory_mem_dm                   : out   std_logic_vector(3 downto 0);                     -- mem_dm
+			memory_oct_rzqin                : in    std_logic                     := 'X';             -- oct_rzqin
 			mmo_o_reset                     : out   std_logic;                                        -- o_reset
 			mmo_o_mmo_address               : out   std_logic_vector(4 downto 0);                     -- o_mmo_address
 			mmo_o_mmo_writedata             : out   std_logic_vector(31 downto 0);                    -- o_mmo_writedata
@@ -78,30 +76,15 @@
 			mmo_o_mmo_read                  : out   std_logic;                                        -- o_mmo_read
 			mmo_i_mmo_readdata              : in    std_logic_vector(31 downto 0) := (others => 'X'); -- i_mmo_readdata
 			mmo_o_mmo_write                 : out   std_logic;                                        -- o_mmo_write
-			pll_clk_clk                     : out   std_logic                                         -- clk
+			pio_in_export                   : in    std_logic_vector(4 downto 0)  := (others => 'X'); -- export
+			pll_clk_clk                     : out   std_logic;                                        -- clk
+			reset_reset_n                   : in    std_logic                     := 'X'              -- reset_n
 		);
 	end component TheGamePD;
 
 	u0 : component TheGamePD
 		port map (
 			clk_clk                         => CONNECTED_TO_clk_clk,                         --     clk.clk
-			reset_reset_n                   => CONNECTED_TO_reset_reset_n,                   --   reset.reset_n
-			memory_mem_a                    => CONNECTED_TO_memory_mem_a,                    --  memory.mem_a
-			memory_mem_ba                   => CONNECTED_TO_memory_mem_ba,                   --        .mem_ba
-			memory_mem_ck                   => CONNECTED_TO_memory_mem_ck,                   --        .mem_ck
-			memory_mem_ck_n                 => CONNECTED_TO_memory_mem_ck_n,                 --        .mem_ck_n
-			memory_mem_cke                  => CONNECTED_TO_memory_mem_cke,                  --        .mem_cke
-			memory_mem_cs_n                 => CONNECTED_TO_memory_mem_cs_n,                 --        .mem_cs_n
-			memory_mem_ras_n                => CONNECTED_TO_memory_mem_ras_n,                --        .mem_ras_n
-			memory_mem_cas_n                => CONNECTED_TO_memory_mem_cas_n,                --        .mem_cas_n
-			memory_mem_we_n                 => CONNECTED_TO_memory_mem_we_n,                 --        .mem_we_n
-			memory_mem_reset_n              => CONNECTED_TO_memory_mem_reset_n,              --        .mem_reset_n
-			memory_mem_dq                   => CONNECTED_TO_memory_mem_dq,                   --        .mem_dq
-			memory_mem_dqs                  => CONNECTED_TO_memory_mem_dqs,                  --        .mem_dqs
-			memory_mem_dqs_n                => CONNECTED_TO_memory_mem_dqs_n,                --        .mem_dqs_n
-			memory_mem_odt                  => CONNECTED_TO_memory_mem_odt,                  --        .mem_odt
-			memory_mem_dm                   => CONNECTED_TO_memory_mem_dm,                   --        .mem_dm
-			memory_oct_rzqin                => CONNECTED_TO_memory_oct_rzqin,                --        .oct_rzqin
 			hps_io_hps_io_emac1_inst_TX_CLK => CONNECTED_TO_hps_io_hps_io_emac1_inst_TX_CLK, --  hps_io.hps_io_emac1_inst_TX_CLK
 			hps_io_hps_io_emac1_inst_TXD0   => CONNECTED_TO_hps_io_hps_io_emac1_inst_TXD0,   --        .hps_io_emac1_inst_TXD0
 			hps_io_hps_io_emac1_inst_TXD1   => CONNECTED_TO_hps_io_hps_io_emac1_inst_TXD1,   --        .hps_io_emac1_inst_TXD1
@@ -154,7 +137,22 @@
 			hps_io_hps_io_i2c0_inst_SCL     => CONNECTED_TO_hps_io_hps_io_i2c0_inst_SCL,     --        .hps_io_i2c0_inst_SCL
 			hps_io_hps_io_i2c1_inst_SDA     => CONNECTED_TO_hps_io_hps_io_i2c1_inst_SDA,     --        .hps_io_i2c1_inst_SDA
 			hps_io_hps_io_i2c1_inst_SCL     => CONNECTED_TO_hps_io_hps_io_i2c1_inst_SCL,     --        .hps_io_i2c1_inst_SCL
-			pio_in_export                   => CONNECTED_TO_pio_in_export,                   --  pio_in.export
+			memory_mem_a                    => CONNECTED_TO_memory_mem_a,                    --  memory.mem_a
+			memory_mem_ba                   => CONNECTED_TO_memory_mem_ba,                   --        .mem_ba
+			memory_mem_ck                   => CONNECTED_TO_memory_mem_ck,                   --        .mem_ck
+			memory_mem_ck_n                 => CONNECTED_TO_memory_mem_ck_n,                 --        .mem_ck_n
+			memory_mem_cke                  => CONNECTED_TO_memory_mem_cke,                  --        .mem_cke
+			memory_mem_cs_n                 => CONNECTED_TO_memory_mem_cs_n,                 --        .mem_cs_n
+			memory_mem_ras_n                => CONNECTED_TO_memory_mem_ras_n,                --        .mem_ras_n
+			memory_mem_cas_n                => CONNECTED_TO_memory_mem_cas_n,                --        .mem_cas_n
+			memory_mem_we_n                 => CONNECTED_TO_memory_mem_we_n,                 --        .mem_we_n
+			memory_mem_reset_n              => CONNECTED_TO_memory_mem_reset_n,              --        .mem_reset_n
+			memory_mem_dq                   => CONNECTED_TO_memory_mem_dq,                   --        .mem_dq
+			memory_mem_dqs                  => CONNECTED_TO_memory_mem_dqs,                  --        .mem_dqs
+			memory_mem_dqs_n                => CONNECTED_TO_memory_mem_dqs_n,                --        .mem_dqs_n
+			memory_mem_odt                  => CONNECTED_TO_memory_mem_odt,                  --        .mem_odt
+			memory_mem_dm                   => CONNECTED_TO_memory_mem_dm,                   --        .mem_dm
+			memory_oct_rzqin                => CONNECTED_TO_memory_oct_rzqin,                --        .oct_rzqin
 			mmo_o_reset                     => CONNECTED_TO_mmo_o_reset,                     --     mmo.o_reset
 			mmo_o_mmo_address               => CONNECTED_TO_mmo_o_mmo_address,               --        .o_mmo_address
 			mmo_o_mmo_writedata             => CONNECTED_TO_mmo_o_mmo_writedata,             --        .o_mmo_writedata
@@ -162,6 +160,8 @@
 			mmo_o_mmo_read                  => CONNECTED_TO_mmo_o_mmo_read,                  --        .o_mmo_read
 			mmo_i_mmo_readdata              => CONNECTED_TO_mmo_i_mmo_readdata,              --        .i_mmo_readdata
 			mmo_o_mmo_write                 => CONNECTED_TO_mmo_o_mmo_write,                 --        .o_mmo_write
-			pll_clk_clk                     => CONNECTED_TO_pll_clk_clk                      -- pll_clk.clk
+			pio_in_export                   => CONNECTED_TO_pio_in_export,                   --  pio_in.export
+			pll_clk_clk                     => CONNECTED_TO_pll_clk_clk,                     -- pll_clk.clk
+			reset_reset_n                   => CONNECTED_TO_reset_reset_n                    --   reset.reset_n
 		);
 

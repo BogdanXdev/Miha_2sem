@@ -9,7 +9,7 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/University Program/Audio &amp; Video,Library/University Program/Audio &amp; Video/Video,Library/Basic Functions/Bridges and Adaptors,Library,Library/University Program,Project,Library/Basic Functions/Bridges and Adaptors/Clock,Library/Basic Functions" />
- <window width="1920" height="1040" x="0" y="0" />
+   expandedCategories="Project,Library,Library/Basic Functions,Library/Basic Functions/Bridges and Adaptors" />
+ <window width="1936" height="1056" x="-1928" y="-8" />
  <generation synthesis="VHDL" />
 </preferences>

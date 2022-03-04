@@ -142,12 +142,15 @@ void pads_move()
 /* physical address spans */
 #define LWHPS2FPGA_BASE 0xff200000 /* physical address of the LWH2F bridge */
 #define LWHPS2FPGA_SPAN 0x3000     /* address span to map */
+#define HPS2FPGA_BASE 0xc0000000   /* physical address of the H2F bridge */
+#define HPS2FPGA_SPAN 0x1000       /* address span to map */
 
 void main()
 {
 
-    int fd;                   /* file descriptor */
-    unsigned char *mem_lwh2f; /* memory pointer for LW HPS2FPGA bridge */
+    int fd;                            /* file descriptor */
+    volatile unsigned char *mem_lwh2f; /* memory pointer for LW HPS2FPGA bridge */
+    volatile unsigned char *mem_h2f; /* memory pointer for LW HPS2FPGA bridge */
 
     if ((fd = open("/dev/mem", O_RDWR | O_SYNC)) < 0)
     {
@@ -160,6 +163,14 @@ void main()
     if (mem_lwh2f == NULL)
     {
         _E("Failed to map \"LWHPS2FPGA\" bridge");
+        return -1;
+    }
+
+    _I("Mapping physical address - HPS2FPGA");
+    mem_h2f = mmap(0, HPS2FPGA_SPAN, PROT_READ | PROT_WRITE, MAP_SHARED, fd, HPS2FPGA_BASE);
+    if (mem_h2f == NULL)
+    {
+        _E("Failed to map \"HPS2FPGA\" bridge");
         return -1;
     }
 
