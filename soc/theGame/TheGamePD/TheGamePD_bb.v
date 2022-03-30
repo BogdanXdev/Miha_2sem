@@ -77,7 +77,6 @@ module TheGamePD (
 	mmo_i_mmo_readdata,
 	mmo_o_mmo_write,
 	pio_in_export,
-	pll_clk_clk,
 	reset_reset_n);	
 
 	input		clk_clk;
@@ -157,6 +156,5 @@ module TheGamePD (
 	input	[31:0]	mmo_i_mmo_readdata;
 	output		mmo_o_mmo_write;
 	input	[4:0]	pio_in_export;
-	output		pll_clk_clk;
 	input		reset_reset_n;
 endmodule

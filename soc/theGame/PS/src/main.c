@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdint.h>
 
+// TODO: library of gaming mechanics
+
 //  |(0,0)____________(640,0)|      coordinates of everything in
 //  |________________________|   this project are interpreted
 //  |________________________|   in this manner
@@ -26,6 +28,11 @@ typedef struct
 primitive pad_0[3] = {{pad0_x, 0, primitive_side}, {pad0_x, 10, primitive_side}, {pad0_x, 20, primitive_side}};
 primitive ball[1] = {{50, 50, primitive_side}};
 primitive pad_1[3] = {{pad1_x, 0, primitive_side}, {pad1_x, 10, primitive_side}, {pad1_x, 20, primitive_side}};
+
+// TODO colors of the objects 
+// only two colors in Game exist - white and black so binary array is required  
+// 0 - white  1 - black
+bool color_base[3] = {0, 0, 0};
 
 // object movement vector
 typedef struct
@@ -77,7 +84,9 @@ void ballvector_change()
         _2d_vector_ball.x_vec = primitive_side;
     }
 }
-
+// TODO: should be corrected in following way: 
+    // walls behind the platforms = GAME OVER
+    // 640 px walls are providing bounce of the ball
 void ball_collision(primitive *ball, primitive *pad0, primitive *pad1)
 { // ball out of the gaming field
     if (ball
@@ -116,7 +125,7 @@ void ball_move()
 
 void padvector_change()
 {
-    _I("Waiting for button press..."); // 5 buttons should be implemented
+    _I("Waiting for button press..."); // 5 buttons implemented
     while ((*(mem_lwh2f)&0x1))         /* polling for button to be pressed */
         _2d_vector_pad0.y_vec = primitive_side;
     while ((*(mem_lwh2f)&0x2))
@@ -135,6 +144,8 @@ void pads_move()
     object_movement(pad_0, 3, _2d_vector_pad0);
     object_movement(pad_1, 3, _2d_vector_pad1);
 }
+
+
 
 /* utilities */
 #define _I(fmt, args...) printf(fmt "\n", ##args)
@@ -177,12 +188,11 @@ void main()
     while (1)
     {
         // draw object()
-
+        
+        mem_h2f
         pads_move();
         ball_move();
+// TODO color the video stream
 
-        // video potok - potok s kazhdim pixelom? ili toljko informacija ob
-        // ramka igrovogo polja vtraivaetsa v video potok
-        //  ostaljnije dannije
     }
 }

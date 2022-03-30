@@ -104,11 +104,7 @@
    internal="pio_in.external_connection"
    type="conduit"
    dir="end" />
- <interface
-   name="pll_clk"
-   internal="clock_bridge_0.out_clk"
-   type="clock"
-   dir="start" />
+ <interface name="pll_clk" internal="clock_bridge_0.out_clk" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <module
    name="avalon_MM_export_bridge_0"
@@ -127,7 +123,7 @@
    name="clock_bridge_0"
    kind="altera_clock_bridge"
    version="18.1"
-   enabled="1">
+   enabled="0">
   <parameter name="DERIVED_CLOCK_RATE" value="100000000" />
   <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
   <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
