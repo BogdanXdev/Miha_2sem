@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-// TODO: library of gaming mechanics
+// TO DO: library of gaming mechanics
 
 //  |(0,0)____________(640,0)|      coordinates of everything in
 //  |________________________|   this project are interpreted
@@ -28,11 +28,6 @@ typedef struct
 primitive pad_0[3] = {{pad0_x, 0, primitive_side}, {pad0_x, 10, primitive_side}, {pad0_x, 20, primitive_side}};
 primitive ball[1] = {{50, 50, primitive_side}};
 primitive pad_1[3] = {{pad1_x, 0, primitive_side}, {pad1_x, 10, primitive_side}, {pad1_x, 20, primitive_side}};
-
-// TODO colors of the objects 
-// only two colors in Game exist - white and black so binary array is required  
-// 0 - white  1 - black
-bool color_base[3] = {0, 0, 0};
 
 // object movement vector
 typedef struct
@@ -63,36 +58,36 @@ void ballvector_change()
     //  |PP| |  | |50vt|
     //  |AA| BALL |0 eo|
     //  |DD| |  | |-50r|
-    if (_2d_vector_ball.y_vec = 0)
+    if (_2d_vector_ball.y_vec == 0)
     {
         _2d_vector_ball.y_vec = 0;
     }
-    else if (_2d_vector_ball.y_vec = primitive_side)
+    else if (_2d_vector_ball.y_vec == primitive_side)
     {
         _2d_vector_ball.y_vec = -primitive_side;
     }
-    else if (_2d_vector_ball.y_vec = -primitive_side)
+    else if (_2d_vector_ball.y_vec == -primitive_side)
     {
         _2d_vector_ball.y_vec = primitive_side;
     }
-    if (_2d_vector_ball.x_vec = primitive_side)
+    if (_2d_vector_ball.x_vec == primitive_side)
     {
         _2d_vector_ball.x_vec = -primitive_side;
     }
-    else if (_2d_vector_ball.x_vec = -primitive_side)
+    else if (_2d_vector_ball.x_vec == -primitive_side)
     {
         _2d_vector_ball.x_vec = primitive_side;
     }
 }
-// TODO: should be corrected in following way: 
-    // walls behind the platforms = GAME OVER
-    // 640 px walls are providing bounce of the ball
+// TO DO: should be corrected in following way:
+// walls behind the platforms = GAME OVER
+// 640 px walls are providing bounce of the ball
 void ball_collision(primitive *ball, primitive *pad0, primitive *pad1)
 { // ball out of the gaming field
     if (ball
             [0]
-                .x = 0 || ball[0].x = 640 ||
-                                      ball[0].y = 0 || ball[0].y = 512)
+                .x == 0 || ball[0].x == 640 ||
+                                      ball[0].y = 0 || ball[0].y == 512)
     {
         printf("GAME OVER!!!/n Take it easy. Go get some coffee. Relax./n");
     }
@@ -101,7 +96,7 @@ void ball_collision(primitive *ball, primitive *pad0, primitive *pad1)
     { // ball collissions with the platforms
         if (ball
                 [0]
-                    .x = pad0_x + primitive_side && ball[0].y = pad0[i].y)
+                    .x == pad0_x + primitive_side && ball[0].y == pad0[i].y)
         {
             printf("collision with pad0 /n");
             ballvector_change();
@@ -109,7 +104,7 @@ void ball_collision(primitive *ball, primitive *pad0, primitive *pad1)
         if (ball
                     [0]
                         .x +
-                primitive_side = pad1_x && ball[0].y = pad1[i].y)
+                primitive_side == pad1_x && ball[0].y == pad1[i].y)
         {
             printf("collision with pad1 /n");
             ballvector_change();
@@ -119,7 +114,7 @@ void ball_collision(primitive *ball, primitive *pad0, primitive *pad1)
 
 void ball_move()
 {
-    ball_collission();
+    ball_collision();
     object_movement(ball, 1, _2d_vector_ball);
 }
 
@@ -145,7 +140,29 @@ void pads_move()
     object_movement(pad_1, 3, _2d_vector_pad1);
 }
 
+uint32_t pixel_nmbr = 0;
+void pixel_cnt()
+{
+    pixel_nmbr++;
+}
 
+uint32_t line_nmbr = 0;
+void line_cnt()
+{
+    line_nmbr++;
+}
+
+uint8_t pixel = 0;
+
+// compare object pixel with streaming pixel 
+bool pixel_compare(uint8_t x, uint8_t y, primitive* obj, uint8_t obj_size) {
+    for (uint8_t i = 0; i < obj_size; i++) {
+        if (obj[i].x =< x && x < obj[i].x + obj[i].side && obj[i].y =< y && y < obj[i].y + obj[i].side){
+            return true;
+        } 
+    }
+    return false;
+}
 
 /* utilities */
 #define _I(fmt, args...) printf(fmt "\n", ##args)
@@ -161,7 +178,7 @@ void main()
 
     int fd;                            /* file descriptor */
     volatile unsigned char *mem_lwh2f; /* memory pointer for LW HPS2FPGA bridge */
-    volatile unsigned char *mem_h2f; /* memory pointer for LW HPS2FPGA bridge */
+    volatile unsigned char *mem_h2f;   /* memory pointer for LW HPS2FPGA bridge */
 
     if ((fd = open("/dev/mem", O_RDWR | O_SYNC)) < 0)
     {
@@ -187,12 +204,24 @@ void main()
 
     while (1)
     {
-        // draw object()
-        
-        mem_h2f
         pads_move();
         ball_move();
-// TODO color the video stream
 
+    // TO DO: some delay tuning for getting particular FPS how to connect it with a clock and for 
+    //sleep(500); 
+
+        for (i = 0; i < 512; i++)
+        {
+            // TO DO: some delay tuning for getting particular FPS
+            for (j = 0; j < 640; j++)
+            {
+                //  TO DO: some delay tuning for getting particular FPS
+                if (pixel_compare(j, i, ball, 1) || pixel_compare(j, i, pad_0, 3) || pixel_compare (j, i, pad_1, 3)) {
+                    *mem_h2f = 255; // ??? dereferencing the void pointer ??? legal ???
+                } else {
+                    *mem_h2f = 0;
+                }
+            }
+        }
     }
 }

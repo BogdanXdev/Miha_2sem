@@ -9,6 +9,22 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
+   element TheGamePD
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
+   element TheGamePD
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element avalon_MM_export_bridge_0
    {
       datum _sortIndex
@@ -17,32 +33,11 @@
          type = "int";
       }
    }
-   element avalon_MM_export_bridge_0.mmi
-   {
-      datum _lockedAddress
-      {
-         value = "0";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "128";
-         type = "String";
-      }
-   }
    element clk_0
    {
       datum _sortIndex
       {
          value = "0";
-         type = "int";
-      }
-   }
-   element clock_bridge_0
-   {
-      datum _sortIndex
-      {
-         value = "5";
          type = "int";
       }
    }
@@ -92,20 +87,30 @@
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
+ <interface
+   name="clk_o"
+   internal="avalon_MM_export_bridge_0.clock_source"
+   type="clock"
+   dir="start" />
  <interface name="hps_io" internal="hps_0.hps_io" type="conduit" dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
+ <interface name="mmo" internal="avalon_MM_export_bridge_0.mmo" />
  <interface
-   name="mmo"
-   internal="avalon_MM_export_bridge_0.mmo"
-   type="conduit"
-   dir="end" />
+   name="o_mmo"
+   internal="avalon_MM_export_bridge_0.o_mmo"
+   type="avalon"
+   dir="start" />
  <interface
    name="pio_in"
    internal="pio_in.external_connection"
    type="conduit"
    dir="end" />
- <interface name="pll_clk" internal="clock_bridge_0.out_clk" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface
+   name="reset_o"
+   internal="avalon_MM_export_bridge_0.reset_source"
+   type="reset"
+   dir="start" />
  <module
    name="avalon_MM_export_bridge_0"
    kind="avalon_MM_export_bridge"
@@ -118,15 +123,6 @@
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
- </module>
- <module
-   name="clock_bridge_0"
-   kind="altera_clock_bridge"
-   version="18.1"
-   enabled="0">
-  <parameter name="DERIVED_CLOCK_RATE" value="100000000" />
-  <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
-  <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
  </module>
  <module name="hps_0" kind="altera_hps" version="18.1" enabled="1">
   <parameter name="ABSTRACT_REAL_COMPARE_TEST" value="false" />
@@ -879,9 +875,9 @@
    kind="avalon"
    version="18.1"
    start="hps_0.h2f_axi_master"
-   end="avalon_MM_export_bridge_0.mmi">
+   end="avalon_MM_export_bridge_0.i_mmi">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0080" />
+  <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -899,7 +895,7 @@
    kind="clock"
    version="18.1"
    start="pll_0.outclk0"
-   end="avalon_MM_export_bridge_0.clock" />
+   end="avalon_MM_export_bridge_0.clock_sink" />
  <connection
    kind="clock"
    version="18.1"
@@ -916,11 +912,6 @@
    start="pll_0.outclk0"
    end="hps_0.h2f_lw_axi_clock" />
  <connection
-   kind="clock"
-   version="18.1"
-   start="pll_0.outclk0"
-   end="clock_bridge_0.in_clk" />
- <connection
    kind="reset"
    version="18.1"
    start="hps_0.h2f_reset"
@@ -930,7 +921,7 @@
    kind="reset"
    version="18.1"
    start="hps_0.h2f_reset"
-   end="avalon_MM_export_bridge_0.reset" />
+   end="avalon_MM_export_bridge_0.reset_sink" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

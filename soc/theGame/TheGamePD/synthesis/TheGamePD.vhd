@@ -96,7 +96,7 @@ architecture rtl of TheGamePD is
 		);
 		port (
 			i_rst            : in  std_logic                     := 'X';             -- reset
-			cll              : in  std_logic                     := 'X';             -- clk
+			clk              : in  std_logic                     := 'X';             -- clk
 			i_mmi_address    : in  std_logic_vector(4 downto 0)  := (others => 'X'); -- address
 			i_mmi_byteenable : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- byteenable
 			i_mmi_writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
@@ -493,7 +493,7 @@ architecture rtl of TheGamePD is
 		);
 	end component altera_reset_controller;
 
-	signal pll_0_outclk0_clk                                          : std_logic;                     -- pll_0:outclk_0 -> [avalon_MM_export_bridge_0:cll, hps_0:f2h_axi_clk, hps_0:h2f_axi_clk, hps_0:h2f_lw_axi_clk, mm_interconnect_0:pll_0_outclk0_clk, mm_interconnect_1:pll_0_outclk0_clk, pio_in:clk, rst_controller:clk]
+	signal pll_0_outclk0_clk                                          : std_logic;                     -- pll_0:outclk_0 -> [avalon_MM_export_bridge_0:clk, hps_0:f2h_axi_clk, hps_0:h2f_axi_clk, hps_0:h2f_lw_axi_clk, mm_interconnect_0:pll_0_outclk0_clk, mm_interconnect_1:pll_0_outclk0_clk, pio_in:clk, rst_controller:clk]
 	signal hps_0_h2f_reset_reset                                      : std_logic;                     -- hps_0:h2f_rst_n -> hps_0_h2f_reset_reset:in
 	signal hps_0_h2f_axi_master_awburst                               : std_logic_vector(1 downto 0);  -- hps_0:h2f_AWBURST -> mm_interconnect_0:hps_0_h2f_axi_master_awburst
 	signal hps_0_h2f_axi_master_arlen                                 : std_logic_vector(3 downto 0);  -- hps_0:h2f_ARLEN -> mm_interconnect_0:hps_0_h2f_axi_master_arlen
@@ -589,7 +589,7 @@ begin
 		)
 		port map (
 			i_rst            => rst_controller_reset_out_reset,                             -- reset.reset
-			cll              => pll_0_outclk0_clk,                                          -- clock.clk
+			clk              => pll_0_outclk0_clk,                                          -- clock.clk
 			i_mmi_address    => mm_interconnect_0_avalon_mm_export_bridge_0_mmi_address,    --   mmi.address
 			i_mmi_byteenable => mm_interconnect_0_avalon_mm_export_bridge_0_mmi_byteenable, --      .byteenable
 			i_mmi_writedata  => mm_interconnect_0_avalon_mm_export_bridge_0_mmi_writedata,  --      .writedata

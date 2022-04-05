@@ -69,15 +69,16 @@ module TheGamePD (
 	memory_mem_odt,
 	memory_mem_dm,
 	memory_oct_rzqin,
-	mmo_o_reset,
-	mmo_o_mmo_address,
-	mmo_o_mmo_writedata,
-	mmo_o_mmo_byteenable,
-	mmo_o_mmo_read,
-	mmo_i_mmo_readdata,
-	mmo_o_mmo_write,
 	pio_in_export,
-	reset_reset_n);	
+	reset_reset_n,
+	clk_o_clk,
+	o_mmo_write,
+	o_mmo_read,
+	o_mmo_address,
+	o_mmo_writedata,
+	o_mmo_byteenable,
+	o_mmo_readdata,
+	reset_o_reset);	
 
 	input		clk_clk;
 	output		hps_io_hps_io_emac1_inst_TX_CLK;
@@ -148,13 +149,14 @@ module TheGamePD (
 	output		memory_mem_odt;
 	output	[3:0]	memory_mem_dm;
 	input		memory_oct_rzqin;
-	output		mmo_o_reset;
-	output	[4:0]	mmo_o_mmo_address;
-	output	[31:0]	mmo_o_mmo_writedata;
-	output	[3:0]	mmo_o_mmo_byteenable;
-	output		mmo_o_mmo_read;
-	input	[31:0]	mmo_i_mmo_readdata;
-	output		mmo_o_mmo_write;
 	input	[4:0]	pio_in_export;
 	input		reset_reset_n;
+	output		clk_o_clk;
+	output		o_mmo_write;
+	output		o_mmo_read;
+	output	[4:0]	o_mmo_address;
+	output	[31:0]	o_mmo_writedata;
+	output	[3:0]	o_mmo_byteenable;
+	input	[31:0]	o_mmo_readdata;
+	output		reset_o_reset;
 endmodule

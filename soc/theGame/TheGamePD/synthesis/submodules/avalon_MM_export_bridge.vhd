@@ -11,7 +11,8 @@ entity avalon_MM_export_bridge is
 
 	port 
 	(
-		clk		: in std_logic;
+		clk_i		: in std_logic;
+		clk_o		: out std_logic;
 		
 		i_reset : in std_logic;
 		i_mmi_write : in std_logic;
@@ -38,6 +39,7 @@ architecture rtl of avalon_MM_export_bridge is
 begin
 
 	o_reset <= i_reset;
+	clk_o <= clk_i ;
 	
 	o_mmo_address <= i_mmi_address;
 	o_mmo_byteenable <= i_mmi_byteenable;
