@@ -56,3 +56,4 @@ set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name BDF_FILE main.bdf
 set_global_assignment -name VHDL_FILE VGA.vhd -hdl_version VHDL_2008
 set_global_assignment -name VHDL_FILE MMO_to_VGA.vhd
+set_global_assignment -name VHDL_FILE avalon_ST_export_bridge.vhd

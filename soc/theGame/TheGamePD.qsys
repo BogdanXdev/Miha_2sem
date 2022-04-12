@@ -33,6 +33,14 @@
          type = "int";
       }
    }
+   element avalon_MM_export_bridge_0.mmi
+   {
+      datum baseAddress
+      {
+         value = "128";
+         type = "String";
+      }
+   }
    element clk_0
    {
       datum _sortIndex
@@ -41,11 +49,27 @@
          type = "int";
       }
    }
+   element dma_read_master_0
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
    element hps_0
    {
       datum _sortIndex
       {
          value = "2";
+         type = "int";
+      }
+   }
+   element modular_sgdma_dispatcher_0
+   {
+      datum _sortIndex
+      {
+         value = "5";
          type = "int";
       }
    }
@@ -87,30 +111,19 @@
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
- <interface
-   name="clk_o"
-   internal="avalon_MM_export_bridge_0.clock_source"
-   type="clock"
-   dir="start" />
  <interface name="hps_io" internal="hps_0.hps_io" type="conduit" dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
- <interface name="mmo" internal="avalon_MM_export_bridge_0.mmo" />
  <interface
-   name="o_mmo"
-   internal="avalon_MM_export_bridge_0.o_mmo"
-   type="avalon"
-   dir="start" />
+   name="mmo"
+   internal="avalon_MM_export_bridge_0.mmo"
+   type="conduit"
+   dir="end" />
  <interface
    name="pio_in"
    internal="pio_in.external_connection"
    type="conduit"
    dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
- <interface
-   name="reset_o"
-   internal="avalon_MM_export_bridge_0.reset_source"
-   type="reset"
-   dir="start" />
  <module
    name="avalon_MM_export_bridge_0"
    kind="avalon_MM_export_bridge"
@@ -123,6 +136,30 @@
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module
+   name="dma_read_master_0"
+   kind="dma_read_master"
+   version="18.1"
+   enabled="1">
+  <parameter name="BURST_ENABLE" value="0" />
+  <parameter name="CHANNEL_ENABLE" value="0" />
+  <parameter name="CHANNEL_WIDTH" value="8" />
+  <parameter name="DATA_WIDTH" value="32" />
+  <parameter name="ERROR_ENABLE" value="0" />
+  <parameter name="ERROR_WIDTH" value="8" />
+  <parameter name="FIFO_DEPTH" value="32" />
+  <parameter name="FIFO_SPEED_OPTIMIZATION" value="1" />
+  <parameter name="FIX_ADDRESS_WIDTH" value="32" />
+  <parameter name="GUI_BURST_WRAPPING_SUPPORT" value="0" />
+  <parameter name="GUI_MAX_BURST_COUNT" value="2" />
+  <parameter name="GUI_PROGRAMMABLE_BURST_ENABLE" value="0" />
+  <parameter name="GUI_STRIDE_WIDTH" value="1" />
+  <parameter name="LENGTH_WIDTH" value="32" />
+  <parameter name="PACKET_ENABLE" value="0" />
+  <parameter name="STRIDE_ENABLE" value="0" />
+  <parameter name="TRANSFER_TYPE" value="Aligned Accesses" />
+  <parameter name="USE_FIX_ADDRESS_WIDTH" value="0" />
  </module>
  <module name="hps_0" kind="altera_hps" version="18.1" enabled="1">
   <parameter name="ABSTRACT_REAL_COMPARE_TEST" value="false" />
@@ -654,6 +691,28 @@
   <parameter name="usb_mp_clk_div" value="0" />
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
+ <module
+   name="modular_sgdma_dispatcher_0"
+   kind="modular_sgdma_dispatcher"
+   version="18.1"
+   enabled="1">
+  <parameter name="BURST_ENABLE" value="0" />
+  <parameter name="BURST_WRAPPING_SUPPORT" value="0" />
+  <parameter name="CSR_ADDRESS_WIDTH" value="3" />
+  <parameter name="DATA_FIFO_DEPTH" value="32" />
+  <parameter name="DATA_WIDTH" value="32" />
+  <parameter name="DESCRIPTOR_FIFO_DEPTH" value="128" />
+  <parameter name="ENHANCED_FEATURES" value="1" />
+  <parameter name="GUI_RESPONSE_PORT" value="0" />
+  <parameter name="MAX_BURST_COUNT" value="2" />
+  <parameter name="MAX_BYTE" value="1024" />
+  <parameter name="MAX_STRIDE" value="1" />
+  <parameter name="MODE" value="1" />
+  <parameter name="PREFETCHER_USE_CASE" value="0" />
+  <parameter name="PROGRAMMABLE_BURST_ENABLE" value="0" />
+  <parameter name="STRIDE_ENABLE" value="0" />
+  <parameter name="TRANSFER_TYPE" value="Aligned Accesses" />
+ </module>
  <module name="pio_in" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -874,10 +933,37 @@
  <connection
    kind="avalon"
    version="18.1"
-   start="hps_0.h2f_axi_master"
-   end="avalon_MM_export_bridge_0.i_mmi">
+   start="dma_read_master_0.Data_Read_Master"
+   end="hps_0.f2h_axi_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="modular_sgdma_dispatcher_0.CSR">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="modular_sgdma_dispatcher_0.Descriptor_Slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="avalon_MM_export_bridge_0.mmi">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -889,13 +975,33 @@
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="modular_sgdma_dispatcher_0.Read_Command_Source"
+   end="dma_read_master_0.Command_Sink" />
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="dma_read_master_0.Response_Source"
+   end="modular_sgdma_dispatcher_0.Read_Response_Sink" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="pll_0.refclk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="pll_0.outclk0"
+   end="dma_read_master_0.Clock" />
  <connection kind="clock" version="18.1" start="pll_0.outclk0" end="pio_in.clk" />
  <connection
    kind="clock"
    version="18.1"
    start="pll_0.outclk0"
-   end="avalon_MM_export_bridge_0.clock_sink" />
+   end="avalon_MM_export_bridge_0.clock" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="pll_0.outclk0"
+   end="modular_sgdma_dispatcher_0.clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -915,13 +1021,23 @@
    kind="reset"
    version="18.1"
    start="hps_0.h2f_reset"
+   end="dma_read_master_0.Clock_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="hps_0.h2f_reset"
+   end="modular_sgdma_dispatcher_0.clock_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="hps_0.h2f_reset"
    end="pio_in.reset" />
  <connection kind="reset" version="18.1" start="hps_0.h2f_reset" end="pll_0.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="hps_0.h2f_reset"
-   end="avalon_MM_export_bridge_0.reset_sink" />
+   end="avalon_MM_export_bridge_0.reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
