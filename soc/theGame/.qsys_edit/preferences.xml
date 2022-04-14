@@ -3,14 +3,13 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces" showClockDomains="0" showResetDomains="0">
   <columns>
-   <connections preferredWidth="223" />
+   <connections preferredWidth="239" />
    <irq preferredWidth="47" />
    <inputclock preferredWidth="131" />
    <name preferredWidth="199" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Project,Library/Basic Functions/DMA,Library/Basic Functions/DMA/mSGDMA Sub-core,Library/Basic Functions,Library" />
- <window width="1096" height="1896" x="-8" y="-8" />
+ <library expandedCategories="Library,Project" />
+ <window width="1936" height="1056" x="-1928" y="410" />
  <generation synthesis="VHDL" />
 </preferences>

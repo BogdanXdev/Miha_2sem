@@ -71,13 +71,13 @@ module TheGamePD (
 	memory_oct_rzqin,
 	pio_in_export,
 	reset_reset_n,
-	mmo_new_signal,
-	mmo_new_signal_1,
-	mmo_new_signal_2,
-	mmo_new_signal_3,
-	mmo_new_signal_4,
-	mmo_new_signal_5,
-	mmo_new_signal_6);	
+	sti_reset_o_sti_reset,
+	sto_ready,
+	sto_valid,
+	sto_data,
+	sto_endofpacket,
+	sto_startofpacket,
+	sto_reset_o_sto_reset);	
 
 	input		clk_clk;
 	output		hps_io_hps_io_emac1_inst_TX_CLK;
@@ -150,11 +150,11 @@ module TheGamePD (
 	input		memory_oct_rzqin;
 	input	[4:0]	pio_in_export;
 	input		reset_reset_n;
-	output		mmo_new_signal;
-	output	[4:0]	mmo_new_signal_1;
-	output	[3:0]	mmo_new_signal_2;
-	output	[31:0]	mmo_new_signal_3;
-	output		mmo_new_signal_4;
-	output		mmo_new_signal_5;
-	input	[31:0]	mmo_new_signal_6;
+	output		sti_reset_o_sti_reset;
+	input		sto_ready;
+	output		sto_valid;
+	output	[7:0]	sto_data;
+	output		sto_endofpacket;
+	output		sto_startofpacket;
+	output		sto_reset_o_sto_reset;
 endmodule

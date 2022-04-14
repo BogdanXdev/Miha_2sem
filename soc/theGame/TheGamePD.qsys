@@ -25,20 +25,12 @@
          type = "String";
       }
    }
-   element avalon_MM_export_bridge_0
+   element avalon_ST_export_bridge_0
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "6";
          type = "int";
-      }
-   }
-   element avalon_MM_export_bridge_0.mmi
-   {
-      datum baseAddress
-      {
-         value = "128";
-         type = "String";
       }
    }
    element clk_0
@@ -53,7 +45,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "5";
          type = "int";
       }
    }
@@ -69,8 +61,24 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "4";
          type = "int";
+      }
+   }
+   element modular_sgdma_dispatcher_0.CSR
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element modular_sgdma_dispatcher_0.Descriptor_Slave
+   {
+      datum baseAddress
+      {
+         value = "32";
+         type = "String";
       }
    }
    element pio_in
@@ -79,6 +87,14 @@
       {
          value = "3";
          type = "int";
+      }
+   }
+   element pio_in.s1
+   {
+      datum baseAddress
+      {
+         value = "48";
+         type = "String";
       }
    }
    element pll_0
@@ -114,22 +130,32 @@
  <interface name="hps_io" internal="hps_0.hps_io" type="conduit" dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface
-   name="mmo"
-   internal="avalon_MM_export_bridge_0.mmo"
-   type="conduit"
-   dir="end" />
- <interface
    name="pio_in"
    internal="pio_in.external_connection"
    type="conduit"
    dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface
+   name="sti_reset"
+   internal="avalon_ST_export_bridge_0.sti_reset_exp"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="sto"
+   internal="avalon_ST_export_bridge_0.sto"
+   type="avalon_streaming"
+   dir="start" />
+ <interface
+   name="sto_reset"
+   internal="avalon_ST_export_bridge_0.sto_reset_exp"
+   type="conduit"
+   dir="end" />
  <module
-   name="avalon_MM_export_bridge_0"
-   kind="avalon_MM_export_bridge"
+   name="avalon_ST_export_bridge_0"
+   kind="avalon_ST_export_bridge"
    version="1.0"
    enabled="1">
-  <parameter name="addr_width" value="5" />
+  <parameter name="data_width" value="8" />
  </module>
  <module name="clk_0" kind="clock_source" version="18.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
@@ -145,7 +171,7 @@
   <parameter name="BURST_ENABLE" value="0" />
   <parameter name="CHANNEL_ENABLE" value="0" />
   <parameter name="CHANNEL_WIDTH" value="8" />
-  <parameter name="DATA_WIDTH" value="32" />
+  <parameter name="DATA_WIDTH" value="8" />
   <parameter name="ERROR_ENABLE" value="0" />
   <parameter name="ERROR_WIDTH" value="8" />
   <parameter name="FIFO_DEPTH" value="32" />
@@ -156,7 +182,7 @@
   <parameter name="GUI_PROGRAMMABLE_BURST_ENABLE" value="0" />
   <parameter name="GUI_STRIDE_WIDTH" value="1" />
   <parameter name="LENGTH_WIDTH" value="32" />
-  <parameter name="PACKET_ENABLE" value="0" />
+  <parameter name="PACKET_ENABLE" value="1" />
   <parameter name="STRIDE_ENABLE" value="0" />
   <parameter name="TRANSFER_TYPE" value="Aligned Accesses" />
   <parameter name="USE_FIX_ADDRESS_WIDTH" value="0" />
@@ -702,7 +728,7 @@
   <parameter name="DATA_FIFO_DEPTH" value="32" />
   <parameter name="DATA_WIDTH" value="32" />
   <parameter name="DESCRIPTOR_FIFO_DEPTH" value="128" />
-  <parameter name="ENHANCED_FEATURES" value="1" />
+  <parameter name="ENHANCED_FEATURES" value="0" />
   <parameter name="GUI_RESPONSE_PORT" value="0" />
   <parameter name="MAX_BURST_COUNT" value="2" />
   <parameter name="MAX_BYTE" value="1024" />
@@ -954,16 +980,7 @@
    start="hps_0.h2f_lw_axi_master"
    end="modular_sgdma_dispatcher_0.Descriptor_Slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="hps_0.h2f_lw_axi_master"
-   end="avalon_MM_export_bridge_0.mmi">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0080" />
+  <parameter name="baseAddress" value="0x0020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -972,9 +989,14 @@
    start="hps_0.h2f_lw_axi_master"
    end="pio_in.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x0030" />
   <parameter name="defaultConnection" value="false" />
  </connection>
+ <connection
+   kind="avalon_streaming"
+   version="18.1"
+   start="dma_read_master_0.Data_Source"
+   end="avalon_ST_export_bridge_0.sti" />
  <connection
    kind="avalon_streaming"
    version="18.1"
@@ -996,12 +1018,12 @@
    kind="clock"
    version="18.1"
    start="pll_0.outclk0"
-   end="avalon_MM_export_bridge_0.clock" />
+   end="modular_sgdma_dispatcher_0.clock" />
  <connection
    kind="clock"
    version="18.1"
    start="pll_0.outclk0"
-   end="modular_sgdma_dispatcher_0.clock" />
+   end="avalon_ST_export_bridge_0.clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -1037,7 +1059,12 @@
    kind="reset"
    version="18.1"
    start="hps_0.h2f_reset"
-   end="avalon_MM_export_bridge_0.reset" />
+   end="avalon_ST_export_bridge_0.sti_reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="hps_0.h2f_reset"
+   end="avalon_ST_export_bridge_0.sto_reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
