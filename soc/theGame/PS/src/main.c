@@ -1,143 +1,27 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <mechanics.h>
+#include "cma_api.h"
+#include <fcntl.h>			// O_RDWR, O_SYNC
 
-// TO DO: library of gaming mechanics
+#define _I(fmt, args...)	printf(fmt "\n", ##args)
+#define _E(fmt, args...)	printf("ERROR: " fmt "\n", ##args)
 
-//  |(0,0)____________(640,0)|      coordinates of everything in
-//  |________________________|   this project are interpreted
-//  |________________________|   in this manner
-//  |________________________|
-//  |(0,512)________(640,512)|
+#define ARRAY_LENGTH		64
+#define DESC_OFFSET			0x20
+#define CSR_OFFSET			0x00
+#define ACP_WINDOW			0x80000000
 
-const uint16_t horizontal = 640;    // resolution x
-const uint16_t vertical = 580;      // resolution y
-const uint16_t primitive_side = 10; // also it is a basic increment
-const uint16_t pad0_x = 0;
-const uint16_t pad1_x = horizontal - primitive_side;
-
-// structure of basic object building element
-typedef struct
+void display_buffer(uint32_t *buffer, int length)
 {
-    uint16_t x;
-    uint16_t y;
+	for(int i=0; i<length; i++)
+	{
+		printf("%.6u ", buffer[i]);
 
-    uint16_t side;
-} primitive;
-
-// objects
-primitive pad_0[3] = {{pad0_x, 0, primitive_side}, {pad0_x, 10, primitive_side}, {pad0_x, 20, primitive_side}};
-primitive ball[1] = {{50, 50, primitive_side}};
-primitive pad_1[3] = {{pad1_x, 0, primitive_side}, {pad1_x, 10, primitive_side}, {pad1_x, 20, primitive_side}};
-
-// object movement vector
-typedef struct
-{
-    sint16_t x_vec;
-    sint16_t y_vec;
-} _2d_vector;
-
-_2d_vector _2d_vector_ball;
-_2d_vector _2d_vector_pad0;
-_2d_vector _2d_vector_pad1;
-
-void object_movement(primitive *primitives_of_object, uint16_t obj_size, _2d_vector movement_increment)
-{
-    for (i = 0; i < obj_size; i++)
-    {
-        primitives_of_object[i].x = primitives_of_object[i].x + movement_increment.x_vec;
-        primitives_of_object[i].y = primitives_of_object[i].y + movement_increment.y_vec;
-    }
-}
-
-void ballvector_change()
-{
-    // time for a vector change, so now old vector should be updated
-    //  3 variants are possible in terms of y movement projection and 2 in x
-
-    // MOVEMENT_VECTOR_Y_PROJECTION
-    //  |PP| |  | |50vt|
-    //  |AA| BALL |0 eo|
-    //  |DD| |  | |-50r|
-    if (_2d_vector_ball.y_vec == 0)
-    {
-        _2d_vector_ball.y_vec = 0;
-    }
-    else if (_2d_vector_ball.y_vec == primitive_side)
-    {
-        _2d_vector_ball.y_vec = -primitive_side;
-    }
-    else if (_2d_vector_ball.y_vec == -primitive_side)
-    {
-        _2d_vector_ball.y_vec = primitive_side;
-    }
-    if (_2d_vector_ball.x_vec == primitive_side)
-    {
-        _2d_vector_ball.x_vec = -primitive_side;
-    }
-    else if (_2d_vector_ball.x_vec == -primitive_side)
-    {
-        _2d_vector_ball.x_vec = primitive_side;
-    }
-}
-// TO DO: should be corrected in following way:
-// walls behind the platforms = GAME OVER
-// 640 px walls are providing bounce of the ball
-void ball_collision(primitive *ball, primitive *pad0, primitive *pad1)
-{ // ball out of the gaming field
-    if (ball
-            [0]
-                .x == 0 || ball[0].x == 640 ||
-                                      ball[0].y = 0 || ball[0].y == 512)
-    {
-        printf("GAME OVER!!!/n Take it easy. Go get some coffee. Relax./n");
-    }
-
-    for (i = 0; i < 2; i++)
-    { // ball collissions with the platforms
-        if (ball
-                [0]
-                    .x == pad0_x + primitive_side && ball[0].y == pad0[i].y)
-        {
-            printf("collision with pad0 /n");
-            ballvector_change();
-        }
-        if (ball
-                    [0]
-                        .x +
-                primitive_side == pad1_x && ball[0].y == pad1[i].y)
-        {
-            printf("collision with pad1 /n");
-            ballvector_change();
-        }
-    }
-}
-
-void ball_move()
-{
-    ball_collision();
-    object_movement(ball, 1, _2d_vector_ball);
-}
-
-void padvector_change()
-{
-    _I("Waiting for button press..."); // 5 buttons implemented
-    while ((*(mem_lwh2f)&0x1))         /* polling for button to be pressed */
-        _2d_vector_pad0.y_vec = primitive_side;
-    while ((*(mem_lwh2f)&0x2))
-        _2d_vector_pad0.y_vec = primitive_side;
-    while ((*(mem_lwh2f)&0x4))
-        _2d_vector_pad1.y_vec = -primitive_side;
-    while ((*(mem_lwh2f)&0x8))
-        _2d_vector_pad1.y_vec = primitive_side;
-    while ((*(mem_lwh2f)&0x16))
-        ;
-}
-
-void pads_move()
-{
-    padvector_change();
-    object_movement(pad_0, 3, _2d_vector_pad0);
-    object_movement(pad_1, 3, _2d_vector_pad1);
+		// new line after each 8th element
+		if(i % 8 == 7)
+			putchar('\n');
+	}
 }
 
 uint32_t pixel_nmbr = 0;
@@ -154,15 +38,6 @@ void line_cnt()
 
 uint8_t pixel = 0;
 
-// compare object pixel with streaming pixel 
-bool pixel_compare(uint8_t x, uint8_t y, primitive* obj, uint8_t obj_size) {
-    for (uint8_t i = 0; i < obj_size; i++) {
-        if (obj[i].x =< x && x < obj[i].x + obj[i].side && obj[i].y =< y && y < obj[i].y + obj[i].side){
-            return true;
-        } 
-    }
-    return false;
-}
 
 /* utilities */
 #define _I(fmt, args...) printf(fmt "\n", ##args)
@@ -175,6 +50,29 @@ bool pixel_compare(uint8_t x, uint8_t y, primitive* obj, uint8_t obj_size) {
 
 void main()
 {
+
+    _I("Compiled at %s %s", __DATE__, __TIME__);
+
+    _I("initializing CMA APIs");
+	if (cma_init() != 0)
+	{
+		_E("failed to initialize CMA");
+		return 1;
+	}
+
+    _I("allocating contiguous memory");
+	uint32_t *buffer_src = (uint32_t*)cma_alloc_noncached(ARRAY_LENGTH*sizeof(uint32_t));
+	uint32_t *buffer_dst = (uint32_t*)cma_alloc_noncached(ARRAY_LENGTH*sizeof(uint32_t));
+
+    _I("filling memory (src array)");
+	for (uint32_t i=0; i<ARRAY_LENGTH; i++)
+	buffer_src[i] = i;
+
+    _I("displaying memory contents (src)");
+	display_buffer(buffer_src, ARRAY_LENGTH);
+	_I("displaying memory contents (dst)");
+	display_buffer(buffer_dst, ARRAY_LENGTH);
+
 
     int fd;                            /* file descriptor */
     volatile unsigned char *mem_lwh2f; /* memory pointer for LW HPS2FPGA bridge */

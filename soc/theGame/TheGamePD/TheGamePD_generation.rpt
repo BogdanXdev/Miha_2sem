@@ -1,20 +1,20 @@
 Info: Starting: Create block symbol file (.bsf)
-Info: qsys-generate C:\code\miha\soc\theGame\TheGamePD.qsys --block-symbol-file --output-directory=C:\code\miha\soc\theGame\TheGamePD --family="Cyclone V" --part=5CSXFC6D6F31C6
+Info: qsys-generate C:\Users\Bogdan\Desktop\Miha_2sem\soc\theGame\TheGamePD.qsys --block-symbol-file --output-directory=C:\Users\Bogdan\Desktop\Miha_2sem\soc\theGame\TheGamePD --family="Cyclone V" --part=5CSXFC6D6F31C6
 Progress: Loading theGame/TheGamePD.qsys
 Progress: Reading input file
 Progress: Adding avalon_ST_export_bridge_0 [avalon_ST_export_bridge 1.0]
 Progress: Parameterizing module avalon_ST_export_bridge_0
-Progress: Adding clk_0 [clock_source 18.1]
+Progress: Adding clk_0 [clock_source 18.0]
 Progress: Parameterizing module clk_0
-Progress: Adding dma_read_master_0 [dma_read_master 18.1]
+Progress: Adding dma_read_master_0 [dma_read_master 18.0]
 Progress: Parameterizing module dma_read_master_0
-Progress: Adding hps_0 [altera_hps 18.1]
+Progress: Adding hps_0 [altera_hps 18.0]
 Progress: Parameterizing module hps_0
-Progress: Adding modular_sgdma_dispatcher_0 [modular_sgdma_dispatcher 18.1]
+Progress: Adding modular_sgdma_dispatcher_0 [modular_sgdma_dispatcher 18.0]
 Progress: Parameterizing module modular_sgdma_dispatcher_0
-Progress: Adding pio_in [altera_avalon_pio 18.1]
+Progress: Adding pio_in [altera_avalon_pio 18.0]
 Progress: Parameterizing module pio_in
-Progress: Adding pll_0 [altera_pll 18.1]
+Progress: Adding pll_0 [altera_pll 18.0]
 Progress: Parameterizing module pll_0
 Progress: Building connections
 Progress: Parameterizing connections
@@ -36,22 +36,22 @@ Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: qsys-generate C:\code\miha\soc\theGame\TheGamePD.qsys --synthesis=VHDL --output-directory=C:\code\miha\soc\theGame\TheGamePD\synthesis --family="Cyclone V" --part=5CSXFC6D6F31C6
+Info: qsys-generate C:\Users\Bogdan\Desktop\Miha_2sem\soc\theGame\TheGamePD.qsys --synthesis=VHDL --output-directory=C:\Users\Bogdan\Desktop\Miha_2sem\soc\theGame\TheGamePD\synthesis --family="Cyclone V" --part=5CSXFC6D6F31C6
 Progress: Loading theGame/TheGamePD.qsys
 Progress: Reading input file
 Progress: Adding avalon_ST_export_bridge_0 [avalon_ST_export_bridge 1.0]
 Progress: Parameterizing module avalon_ST_export_bridge_0
-Progress: Adding clk_0 [clock_source 18.1]
+Progress: Adding clk_0 [clock_source 18.0]
 Progress: Parameterizing module clk_0
-Progress: Adding dma_read_master_0 [dma_read_master 18.1]
+Progress: Adding dma_read_master_0 [dma_read_master 18.0]
 Progress: Parameterizing module dma_read_master_0
-Progress: Adding hps_0 [altera_hps 18.1]
+Progress: Adding hps_0 [altera_hps 18.0]
 Progress: Parameterizing module hps_0
-Progress: Adding modular_sgdma_dispatcher_0 [modular_sgdma_dispatcher 18.1]
+Progress: Adding modular_sgdma_dispatcher_0 [modular_sgdma_dispatcher 18.0]
 Progress: Parameterizing module modular_sgdma_dispatcher_0
-Progress: Adding pio_in [altera_avalon_pio 18.1]
+Progress: Adding pio_in [altera_avalon_pio 18.0]
 Progress: Parameterizing module pio_in
-Progress: Adding pll_0 [altera_pll 18.1]
+Progress: Adding pll_0 [altera_pll 18.0]
 Progress: Parameterizing module pll_0
 Progress: Building connections
 Progress: Parameterizing connections
@@ -86,7 +86,7 @@ Warning: hps_0: 1 or more output clock frequencies cannot be achieved precisely,
 Info: hps_0: "TheGamePD" instantiated altera_hps "hps_0"
 Info: modular_sgdma_dispatcher_0: "TheGamePD" instantiated modular_sgdma_dispatcher "modular_sgdma_dispatcher_0"
 Info: pio_in: Starting RTL generation for module 'TheGamePD_pio_in'
-Info: pio_in:   Generation command is [exec C:/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=TheGamePD_pio_in --dir=C:/Users/bzuko01/AppData/Local/Temp/alt9096_7681325130978613974.dir/0008_pio_in_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/bzuko01/AppData/Local/Temp/alt9096_7681325130978613974.dir/0008_pio_in_gen//TheGamePD_pio_in_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_in:   Generation command is [exec C:/intelfpga_lite/18.0/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.0/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.0/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=TheGamePD_pio_in --dir=C:/Users/Bogdan/AppData/Local/Temp/alt9134_8055169590480054200.dir/0005_pio_in_gen/ --quartus_dir=C:/intelfpga_lite/18.0/quartus --verilog --config=C:/Users/Bogdan/AppData/Local/Temp/alt9134_8055169590480054200.dir/0005_pio_in_gen//TheGamePD_pio_in_component_configuration.pl  --do_build_sim=0  ]
 Info: pio_in: Done RTL generation for module 'TheGamePD_pio_in'
 Info: pio_in: "TheGamePD" instantiated altera_avalon_pio "pio_in"
 Info: pll_0: "TheGamePD" instantiated altera_pll "pll_0"
@@ -105,34 +105,34 @@ Info: hps_0_f2h_axi_slave_agent: "mm_interconnect_0" instantiated altera_merlin_
 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
 Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
 Info: dma_read_master_0_Data_Read_Master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "dma_read_master_0_Data_Read_Master_limiter"
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_avalon_sc_fifo.v
 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: hps_0_f2h_axi_slave_wr_cmd_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "hps_0_f2h_axi_slave_wr_cmd_width_adapter"
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_address_alignment.sv
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_burst_uncompressor.sv
 Info: modular_sgdma_dispatcher_0_CSR_translator: "mm_interconnect_1" instantiated altera_merlin_slave_translator "modular_sgdma_dispatcher_0_CSR_translator"
 Info: hps_0_h2f_lw_axi_master_agent: "mm_interconnect_1" instantiated altera_merlin_axi_master_ni "hps_0_h2f_lw_axi_master_agent"
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_address_alignment.sv
 Info: modular_sgdma_dispatcher_0_CSR_agent: "mm_interconnect_1" instantiated altera_merlin_slave_agent "modular_sgdma_dispatcher_0_CSR_agent"
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_burst_uncompressor.sv
 Info: modular_sgdma_dispatcher_0_CSR_agent_rsp_fifo: "mm_interconnect_1" instantiated altera_avalon_sc_fifo "modular_sgdma_dispatcher_0_CSR_agent_rsp_fifo"
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_avalon_sc_fifo.v
 Info: router: "mm_interconnect_1" instantiated altera_merlin_router "router"
 Info: router_002: "mm_interconnect_1" instantiated altera_merlin_router "router_002"
 Info: router_003: "mm_interconnect_1" instantiated altera_merlin_router "router_003"
 Info: modular_sgdma_dispatcher_0_CSR_burst_adapter: "mm_interconnect_1" instantiated altera_merlin_burst_adapter "modular_sgdma_dispatcher_0_CSR_burst_adapter"
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_address_alignment.sv
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_avalon_st_pipeline_base.v
 Info: cmd_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_mux"
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_mux"
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/Users/Bogdan/Desktop/Miha_2sem/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: avalon_st_adapter: "mm_interconnect_1" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: avalon_st_adapter_001: "mm_interconnect_1" instantiated altera_avalon_st_adapter "avalon_st_adapter_001"
 Info: border: "hps_io" instantiated altera_interface_generator "border"

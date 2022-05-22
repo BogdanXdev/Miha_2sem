@@ -157,7 +157,7 @@
    enabled="1">
   <parameter name="data_width" value="8" />
  </module>
- <module name="clk_0" kind="clock_source" version="18.1" enabled="1">
+ <module name="clk_0" kind="clock_source" version="18.0" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
@@ -166,7 +166,7 @@
  <module
    name="dma_read_master_0"
    kind="dma_read_master"
-   version="18.1"
+   version="18.0"
    enabled="1">
   <parameter name="BURST_ENABLE" value="0" />
   <parameter name="CHANNEL_ENABLE" value="0" />
@@ -187,7 +187,7 @@
   <parameter name="TRANSFER_TYPE" value="Aligned Accesses" />
   <parameter name="USE_FIX_ADDRESS_WIDTH" value="0" />
  </module>
- <module name="hps_0" kind="altera_hps" version="18.1" enabled="1">
+ <module name="hps_0" kind="altera_hps" version="18.0" enabled="1">
   <parameter name="ABSTRACT_REAL_COMPARE_TEST" value="false" />
   <parameter name="ABS_RAM_MEM_INIT_FILENAME" value="meminit" />
   <parameter name="ACV_PHY_CLK_ADD_FR_PHASE" value="0.0" />
@@ -720,7 +720,7 @@
  <module
    name="modular_sgdma_dispatcher_0"
    kind="modular_sgdma_dispatcher"
-   version="18.1"
+   version="18.0"
    enabled="1">
   <parameter name="BURST_ENABLE" value="0" />
   <parameter name="BURST_WRAPPING_SUPPORT" value="0" />
@@ -739,7 +739,7 @@
   <parameter name="STRIDE_ENABLE" value="0" />
   <parameter name="TRANSFER_TYPE" value="Aligned Accesses" />
  </module>
- <module name="pio_in" kind="altera_avalon_pio" version="18.1" enabled="1">
+ <module name="pio_in" kind="altera_avalon_pio" version="18.0" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -753,7 +753,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="5" />
  </module>
- <module name="pll_0" kind="altera_pll" version="18.1" enabled="1">
+ <module name="pll_0" kind="altera_pll" version="18.0" enabled="1">
   <parameter name="debug_print_output" value="false" />
   <parameter name="debug_use_rbc_taf_method" value="false" />
   <parameter name="device" value="5CSXFC6D6F31C6" />
@@ -816,7 +816,7 @@
   <parameter name="gui_cascade_outclk_index" value="0" />
   <parameter name="gui_channel_spacing" value="0.0" />
   <parameter name="gui_clk_bad" value="false" />
-  <parameter name="gui_device_speed_grade" value="1" />
+  <parameter name="gui_device_speed_grade" value="2" />
   <parameter name="gui_divide_factor_c0" value="1" />
   <parameter name="gui_divide_factor_c1" value="1" />
   <parameter name="gui_divide_factor_c10" value="1" />
@@ -958,7 +958,7 @@
  </module>
  <connection
    kind="avalon"
-   version="18.1"
+   version="18.0"
    start="dma_read_master_0.Data_Read_Master"
    end="hps_0.f2h_axi_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -967,7 +967,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="18.1"
+   version="18.0"
    start="hps_0.h2f_lw_axi_master"
    end="modular_sgdma_dispatcher_0.CSR">
   <parameter name="arbitrationPriority" value="1" />
@@ -976,7 +976,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="18.1"
+   version="18.0"
    start="hps_0.h2f_lw_axi_master"
    end="modular_sgdma_dispatcher_0.Descriptor_Slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -985,7 +985,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="18.1"
+   version="18.0"
    start="hps_0.h2f_lw_axi_master"
    end="pio_in.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -994,75 +994,75 @@
  </connection>
  <connection
    kind="avalon_streaming"
-   version="18.1"
+   version="18.0"
    start="dma_read_master_0.Data_Source"
    end="avalon_ST_export_bridge_0.sti" />
  <connection
    kind="avalon_streaming"
-   version="18.1"
+   version="18.0"
    start="modular_sgdma_dispatcher_0.Read_Command_Source"
    end="dma_read_master_0.Command_Sink" />
  <connection
    kind="avalon_streaming"
-   version="18.1"
+   version="18.0"
    start="dma_read_master_0.Response_Source"
    end="modular_sgdma_dispatcher_0.Read_Response_Sink" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="pll_0.refclk" />
+ <connection kind="clock" version="18.0" start="clk_0.clk" end="pll_0.refclk" />
  <connection
    kind="clock"
-   version="18.1"
+   version="18.0"
    start="pll_0.outclk0"
    end="dma_read_master_0.Clock" />
- <connection kind="clock" version="18.1" start="pll_0.outclk0" end="pio_in.clk" />
+ <connection kind="clock" version="18.0" start="pll_0.outclk0" end="pio_in.clk" />
  <connection
    kind="clock"
-   version="18.1"
+   version="18.0"
    start="pll_0.outclk0"
    end="modular_sgdma_dispatcher_0.clock" />
  <connection
    kind="clock"
-   version="18.1"
+   version="18.0"
    start="pll_0.outclk0"
    end="avalon_ST_export_bridge_0.clock" />
  <connection
    kind="clock"
-   version="18.1"
+   version="18.0"
    start="pll_0.outclk0"
    end="hps_0.f2h_axi_clock" />
  <connection
    kind="clock"
-   version="18.1"
+   version="18.0"
    start="pll_0.outclk0"
    end="hps_0.h2f_axi_clock" />
  <connection
    kind="clock"
-   version="18.1"
+   version="18.0"
    start="pll_0.outclk0"
    end="hps_0.h2f_lw_axi_clock" />
  <connection
    kind="reset"
-   version="18.1"
+   version="18.0"
    start="hps_0.h2f_reset"
    end="dma_read_master_0.Clock_reset" />
  <connection
    kind="reset"
-   version="18.1"
+   version="18.0"
    start="hps_0.h2f_reset"
    end="modular_sgdma_dispatcher_0.clock_reset" />
  <connection
    kind="reset"
-   version="18.1"
+   version="18.0"
    start="hps_0.h2f_reset"
    end="pio_in.reset" />
- <connection kind="reset" version="18.1" start="hps_0.h2f_reset" end="pll_0.reset" />
+ <connection kind="reset" version="18.0" start="hps_0.h2f_reset" end="pll_0.reset" />
  <connection
    kind="reset"
-   version="18.1"
+   version="18.0"
    start="hps_0.h2f_reset"
    end="avalon_ST_export_bridge_0.sti_reset" />
  <connection
    kind="reset"
-   version="18.1"
+   version="18.0"
    start="hps_0.h2f_reset"
    end="avalon_ST_export_bridge_0.sto_reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />

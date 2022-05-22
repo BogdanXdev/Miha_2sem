@@ -7,13 +7,14 @@ preplace inst TheGamePD.hps_0.f2s_sdram_ref_clk -pg 1
 preplace inst TheGamePD.hps_0.sysmgr -pg 1
 preplace inst TheGamePD.hps_0.bridges -pg 1
 preplace inst TheGamePD.hps_0.hps_io -pg 1
-preplace inst TheGamePD.clk_0 -pg 1 -lvl 4 -y 610
+preplace inst TheGamePD.clk_0 -pg 1 -lvl 4 -y 600
 preplace inst TheGamePD.hps_0.gpio0 -pg 1
 preplace inst TheGamePD.hps_0.i2c0 -pg 1
 preplace inst TheGamePD.hps_0.gpio1 -pg 1
 preplace inst TheGamePD.hps_0.arm_gic_0 -pg 1
 preplace inst TheGamePD.hps_0.f2s_periph_ref_clk -pg 1
 preplace inst TheGamePD.hps_0.eosc1 -pg 1
+preplace inst TheGamePD.avalon_ST_export_bridge_0 -pg 1 -lvl 6 -y 610
 preplace inst TheGamePD.hps_0.i2c1 -pg 1
 preplace inst TheGamePD.hps_0.gpio2 -pg 1
 preplace inst TheGamePD.hps_0.timer0 -pg 1
@@ -25,15 +26,15 @@ preplace inst TheGamePD.hps_0.dcan0 -pg 1
 preplace inst TheGamePD.hps_0.i2c2 -pg 1
 preplace inst TheGamePD.hps_0.timer1 -pg 1
 preplace inst TheGamePD.hps_0.arm_a9_1 -pg 1
-preplace inst TheGamePD.hps_0 -pg 1 -lvl 4 -y 230
+preplace inst TheGamePD.hps_0 -pg 1 -lvl 4 -y 220
 preplace inst TheGamePD.hps_0.l3regs -pg 1
 preplace inst TheGamePD.hps_0.dcan1 -pg 1
 preplace inst TheGamePD.hps_0.i2c3 -pg 1
 preplace inst TheGamePD.hps_0.timer2 -pg 1
 preplace inst TheGamePD.hps_0.uart0 -pg 1
-preplace inst TheGamePD.dma_read_master_0 -pg 1 -lvl 3 -y 210
-preplace inst TheGamePD.pio_in -pg 1 -lvl 6 -y 510
-preplace inst TheGamePD.modular_sgdma_dispatcher_0 -pg 1 -lvl 4 -y 40
+preplace inst TheGamePD.dma_read_master_0 -pg 1 -lvl 3 -y 140
+preplace inst TheGamePD.pio_in -pg 1 -lvl 6 -y 500
+preplace inst TheGamePD.modular_sgdma_dispatcher_0 -pg 1 -lvl 4 -y 30
 preplace inst TheGamePD.hps_0.scu -pg 1
 preplace inst TheGamePD.hps_0.timer3 -pg 1
 preplace inst TheGamePD.hps_0.uart1 -pg 1
@@ -41,7 +42,7 @@ preplace inst TheGamePD.hps_0.clk_0 -pg 1
 preplace inst TheGamePD.hps_0.usb0 -pg 1
 preplace inst TheGamePD.hps_0.qspi -pg 1
 preplace inst TheGamePD.hps_0.nand0 -pg 1
-preplace inst TheGamePD.pll_0 -pg 1 -lvl 5 -y 590
+preplace inst TheGamePD.pll_0 -pg 1 -lvl 5 -y 580
 preplace inst TheGamePD.hps_0.axi_ocram -pg 1
 preplace inst TheGamePD.hps_0.gmac0 -pg 1
 preplace inst TheGamePD.hps_0.usb1 -pg 1
@@ -57,17 +58,21 @@ preplace inst TheGamePD.hps_0.spim1 -pg 1
 preplace inst TheGamePD.hps_0.wd_timer1 -pg 1
 preplace inst TheGamePD.hps_0.fpgamgr -pg 1
 preplace inst TheGamePD.hps_0.clkmgr -pg 1
-preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)pio_in.external_connection,(SLAVE)TheGamePD.pio_in) 1 0 6 NJ 540 NJ 540 NJ 540 NJ 540 NJ 540 NJ
-preplace netloc POINT_TO_POINT<net_container>TheGamePD</net_container>(MASTER)modular_sgdma_dispatcher_0.Read_Command_Source,(SLAVE)dma_read_master_0.Command_Sink) 1 2 3 430 180 NJ 30 1420
-preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)hps_0.hps_io,(SLAVE)TheGamePD.hps_io) 1 0 4 NJ 320 NJ 320 NJ 320 NJ
-preplace netloc FAN_OUT<net_container>TheGamePD</net_container>(SLAVE)pio_in.clk,(SLAVE)modular_sgdma_dispatcher_0.clock,(SLAVE)dma_read_master_0.Clock,(SLAVE)hps_0.f2h_axi_clock,(SLAVE)hps_0.h2f_lw_axi_clock,(MASTER)pll_0.outclk0,(SLAVE)hps_0.h2f_axi_clock) 1 2 4 450 200 930 560 NJ 680 1610
-preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)hps_0.memory,(SLAVE)TheGamePD.memory) 1 0 4 NJ 340 NJ 340 NJ 340 NJ
-preplace netloc FAN_OUT<net_container>TheGamePD</net_container>(SLAVE)modular_sgdma_dispatcher_0.Descriptor_Slave,(MASTER)hps_0.h2f_lw_axi_master,(SLAVE)pio_in.s1,(SLAVE)modular_sgdma_dispatcher_0.CSR) 1 3 3 990 400 1400 400 1590
-preplace netloc POINT_TO_POINT<net_container>TheGamePD</net_container>(MASTER)dma_read_master_0.Response_Source,(SLAVE)modular_sgdma_dispatcher_0.Read_Response_Sink) 1 3 1 910
-preplace netloc POINT_TO_POINT<net_container>TheGamePD</net_container>(MASTER)dma_read_master_0.Data_Read_Master,(SLAVE)hps_0.f2h_axi_slave) 1 3 1 950
+preplace netloc POINT_TO_POINT<net_container>TheGamePD</net_container>(SLAVE)hps_0.f2h_axi_slave,(MASTER)dma_read_master_0.Data_Read_Master) 1 3 1 980
+preplace netloc EXPORT<net_container>TheGamePD</net_container>(MASTER)avalon_ST_export_bridge_0.sto,(MASTER)TheGamePD.sto) 1 6 1 N
+preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)hps_0.hps_io,(SLAVE)TheGamePD.hps_io) 1 0 4 NJ 310 NJ 310 NJ 310 NJ
+preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)TheGamePD.memory,(SLAVE)hps_0.memory) 1 0 4 NJ 350 NJ 350 NJ 350 NJ
+preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)TheGamePD.reset) 1 0 4 NJ 630 NJ 630 NJ 630 NJ
+preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)TheGamePD.pio_in,(SLAVE)pio_in.external_connection) 1 0 6 NJ 530 NJ 530 NJ 530 NJ 530 NJ 530 NJ
+preplace netloc FAN_OUT<net_container>TheGamePD</net_container>(SLAVE)dma_read_master_0.Clock_reset,(MASTER)hps_0.h2f_reset,(SLAVE)pio_in.reset,(SLAVE)avalon_ST_export_bridge_0.sti_reset,(SLAVE)pll_0.reset,(SLAVE)avalon_ST_export_bridge_0.sto_reset,(SLAVE)modular_sgdma_dispatcher_0.clock_reset) 1 2 4 460 230 920 450 1450 310 1660
+preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)TheGamePD.sto_reset,(SLAVE)avalon_ST_export_bridge_0.sto_reset_exp) 1 0 6 NJ 720 NJ 720 NJ 720 NJ 720 NJ 720 NJ
+preplace netloc POINT_TO_POINT<net_container>TheGamePD</net_container>(MASTER)dma_read_master_0.Response_Source,(SLAVE)modular_sgdma_dispatcher_0.Read_Response_Sink) 1 3 1 900
+preplace netloc FAN_OUT<net_container>TheGamePD</net_container>(SLAVE)hps_0.h2f_axi_clock,(SLAVE)dma_read_master_0.Clock,(SLAVE)modular_sgdma_dispatcher_0.clock,(SLAVE)hps_0.h2f_lw_axi_clock,(SLAVE)hps_0.f2h_axi_clock,(MASTER)pll_0.outclk0,(SLAVE)pio_in.clk,(SLAVE)avalon_ST_export_bridge_0.clock) 1 2 4 440 330 1000 410 NJ 410 1620
 preplace netloc POINT_TO_POINT<net_container>TheGamePD</net_container>(SLAVE)pll_0.refclk,(MASTER)clk_0.clk) 1 4 1 N
-preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)TheGamePD.reset,(SLAVE)clk_0.clk_in_reset) 1 0 4 NJ 640 NJ 640 NJ 640 NJ
-preplace netloc FAN_OUT<net_container>TheGamePD</net_container>(SLAVE)modular_sgdma_dispatcher_0.clock_reset,(SLAVE)pll_0.reset,(SLAVE)pio_in.reset,(MASTER)hps_0.h2f_reset,(SLAVE)dma_read_master_0.Clock_reset) 1 2 4 450 300 970 190 1420 520 1570
-preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)clk_0.clk_in,(SLAVE)TheGamePD.clk) 1 0 4 NJ 620 NJ 620 NJ 620 NJ
-levelinfo -pg 1 0 60 1800
-levelinfo -hier TheGamePD 70 90 410 670 1110 1450 1640 1790
+preplace netloc POINT_TO_POINT<net_container>TheGamePD</net_container>(SLAVE)dma_read_master_0.Command_Sink,(MASTER)modular_sgdma_dispatcher_0.Read_Command_Source) 1 2 3 480 250 NJ 180 1470
+preplace netloc FAN_OUT<net_container>TheGamePD</net_container>(SLAVE)modular_sgdma_dispatcher_0.Descriptor_Slave,(SLAVE)pio_in.s1,(SLAVE)modular_sgdma_dispatcher_0.CSR,(MASTER)hps_0.h2f_lw_axi_master) 1 3 3 1040 430 1470 290 1680
+preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)TheGamePD.sti_reset,(SLAVE)avalon_ST_export_bridge_0.sti_reset_exp) 1 0 6 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ
+preplace netloc EXPORT<net_container>TheGamePD</net_container>(SLAVE)clk_0.clk_in,(SLAVE)TheGamePD.clk) 1 0 4 NJ 610 NJ 610 NJ 610 NJ
+preplace netloc POINT_TO_POINT<net_container>TheGamePD</net_container>(SLAVE)avalon_ST_export_bridge_0.sti,(MASTER)dma_read_master_0.Data_Source) 1 3 3 NJ 390 NJ 390 1640
+levelinfo -pg 1 0 70 1930
+levelinfo -hier TheGamePD 80 100 420 680 1160 1500 1730 1880

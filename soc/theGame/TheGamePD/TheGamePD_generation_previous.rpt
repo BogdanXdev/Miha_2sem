@@ -2,12 +2,16 @@ Info: Starting: Create block symbol file (.bsf)
 Info: qsys-generate C:\code\miha\soc\theGame\TheGamePD.qsys --block-symbol-file --output-directory=C:\code\miha\soc\theGame\TheGamePD --family="Cyclone V" --part=5CSXFC6D6F31C6
 Progress: Loading theGame/TheGamePD.qsys
 Progress: Reading input file
-Progress: Adding avalon_MM_export_bridge_0 [avalon_MM_export_bridge 1.0]
-Progress: Parameterizing module avalon_MM_export_bridge_0
+Progress: Adding avalon_ST_export_bridge_0 [avalon_ST_export_bridge 1.0]
+Progress: Parameterizing module avalon_ST_export_bridge_0
 Progress: Adding clk_0 [clock_source 18.1]
 Progress: Parameterizing module clk_0
+Progress: Adding dma_read_master_0 [dma_read_master 18.1]
+Progress: Parameterizing module dma_read_master_0
 Progress: Adding hps_0 [altera_hps 18.1]
 Progress: Parameterizing module hps_0
+Progress: Adding modular_sgdma_dispatcher_0 [modular_sgdma_dispatcher 18.1]
+Progress: Parameterizing module modular_sgdma_dispatcher_0
 Progress: Adding pio_in [altera_avalon_pio 18.1]
 Progress: Parameterizing module pio_in
 Progress: Adding pll_0 [altera_pll 18.1]
@@ -25,6 +29,9 @@ Info: TheGamePD.pio_in: PIO inputs are not hardwired in test bench. Undefined va
 Info: TheGamePD.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
 Info: TheGamePD.pll_0: Able to implement PLL with user settings
 Warning: TheGamePD.pll_0: pll_0.locked must be exported, or connected to a matching conduit.
+Warning: TheGamePD.modular_sgdma_dispatcher_0: Interrupt sender modular_sgdma_dispatcher_0.csr_irq is not connected to an interrupt receiver
+Warning: TheGamePD.: You have exported the interface avalon_ST_export_bridge_0.sto but not its associated clock interface.  Export avalon_ST_export_bridge_0.clock
+Warning: TheGamePD.: You have exported the interface avalon_ST_export_bridge_0.sto but not its associated reset interface.  Export avalon_ST_export_bridge_0.sto_reset
 Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
@@ -32,12 +39,16 @@ Info: Starting: Create HDL design files for synthesis
 Info: qsys-generate C:\code\miha\soc\theGame\TheGamePD.qsys --synthesis=VHDL --output-directory=C:\code\miha\soc\theGame\TheGamePD\synthesis --family="Cyclone V" --part=5CSXFC6D6F31C6
 Progress: Loading theGame/TheGamePD.qsys
 Progress: Reading input file
-Progress: Adding avalon_MM_export_bridge_0 [avalon_MM_export_bridge 1.0]
-Progress: Parameterizing module avalon_MM_export_bridge_0
+Progress: Adding avalon_ST_export_bridge_0 [avalon_ST_export_bridge 1.0]
+Progress: Parameterizing module avalon_ST_export_bridge_0
 Progress: Adding clk_0 [clock_source 18.1]
 Progress: Parameterizing module clk_0
+Progress: Adding dma_read_master_0 [dma_read_master 18.1]
+Progress: Parameterizing module dma_read_master_0
 Progress: Adding hps_0 [altera_hps 18.1]
 Progress: Parameterizing module hps_0
+Progress: Adding modular_sgdma_dispatcher_0 [modular_sgdma_dispatcher 18.1]
+Progress: Parameterizing module modular_sgdma_dispatcher_0
 Progress: Adding pio_in [altera_avalon_pio 18.1]
 Progress: Parameterizing module pio_in
 Progress: Adding pll_0 [altera_pll 18.1]
@@ -55,14 +66,17 @@ Info: TheGamePD.pio_in: PIO inputs are not hardwired in test bench. Undefined va
 Info: TheGamePD.pll_0: The legal reference clock frequency is 5.0 MHz..800.0 MHz
 Info: TheGamePD.pll_0: Able to implement PLL with user settings
 Warning: TheGamePD.pll_0: pll_0.locked must be exported, or connected to a matching conduit.
+Warning: TheGamePD.modular_sgdma_dispatcher_0: Interrupt sender modular_sgdma_dispatcher_0.csr_irq is not connected to an interrupt receiver
+Warning: TheGamePD.: You have exported the interface avalon_ST_export_bridge_0.sto but not its associated clock interface.  Export avalon_ST_export_bridge_0.clock
+Warning: TheGamePD.: You have exported the interface avalon_ST_export_bridge_0.sto but not its associated reset interface.  Export avalon_ST_export_bridge_0.sto_reset
 Info: TheGamePD: Generating TheGamePD "TheGamePD" for QUARTUS_SYNTH
-Info: Interconnect is inserted between master hps_0.h2f_axi_master and slave avalon_MM_export_bridge_0.mmi because the master is of type axi and the slave is of type avalon.
-Info: Interconnect is inserted between master hps_0.h2f_lw_axi_master and slave pio_in.s1 because the master is of type axi and the slave is of type avalon.
+Info: Interconnect is inserted between master dma_read_master_0.Data_Read_Master and slave hps_0.f2h_axi_slave because the master is of type avalon and the slave is of type axi.
 Warning: hps_0.f2h_irq0: Cannot connect clock for irq_mapper.sender
 Warning: hps_0.f2h_irq0: Cannot connect reset for irq_mapper.sender
 Warning: hps_0.f2h_irq1: Cannot connect clock for irq_mapper_001.sender
 Warning: hps_0.f2h_irq1: Cannot connect reset for irq_mapper_001.sender
-Info: avalon_MM_export_bridge_0: "TheGamePD" instantiated avalon_MM_export_bridge "avalon_MM_export_bridge_0"
+Info: avalon_ST_export_bridge_0: "TheGamePD" instantiated avalon_ST_export_bridge "avalon_ST_export_bridge_0"
+Info: dma_read_master_0: "TheGamePD" instantiated dma_read_master "dma_read_master_0"
 Info: hps_0: "Running  for module: hps_0"
 Info: hps_0: HPS Main PLL counter settings: n = 0  m = 73
 Info: hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
@@ -70,46 +84,60 @@ Warning: hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_
 Warning: hps_0: "QSPI clock frequency" (desired_qspi_clk_mhz) requested 400.0 MHz, but only achieved 370.0 MHz
 Warning: hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
 Info: hps_0: "TheGamePD" instantiated altera_hps "hps_0"
+Info: modular_sgdma_dispatcher_0: "TheGamePD" instantiated modular_sgdma_dispatcher "modular_sgdma_dispatcher_0"
 Info: pio_in: Starting RTL generation for module 'TheGamePD_pio_in'
-Info: pio_in:   Generation command is [exec C:/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=TheGamePD_pio_in --dir=C:/Users/bzuko01/AppData/Local/Temp/alt9083_7402139980754031919.dir/0005_pio_in_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/bzuko01/AppData/Local/Temp/alt9083_7402139980754031919.dir/0005_pio_in_gen//TheGamePD_pio_in_component_configuration.pl  --do_build_sim=0  ]
+Info: pio_in:   Generation command is [exec C:/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga_lite/18.1/quartus/bin64/perl/lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga_lite/18.1/quartus/sopc_builder/bin -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=TheGamePD_pio_in --dir=C:/Users/bzuko01/AppData/Local/Temp/alt9096_7681325130978613974.dir/0008_pio_in_gen/ --quartus_dir=C:/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/bzuko01/AppData/Local/Temp/alt9096_7681325130978613974.dir/0008_pio_in_gen//TheGamePD_pio_in_component_configuration.pl  --do_build_sim=0  ]
 Info: pio_in: Done RTL generation for module 'TheGamePD_pio_in'
 Info: pio_in: "TheGamePD" instantiated altera_avalon_pio "pio_in"
 Info: pll_0: "TheGamePD" instantiated altera_pll "pll_0"
-Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "TheGamePD" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_1: "TheGamePD" instantiated altera_mm_interconnect "mm_interconnect_1"
 Info: irq_mapper: "TheGamePD" instantiated altera_irq_mapper "irq_mapper"
 Info: rst_controller: "TheGamePD" instantiated altera_reset_controller "rst_controller"
 Info: fpga_interfaces: "hps_0" instantiated altera_interface_generator "fpga_interfaces"
 Info: hps_io: "hps_0" instantiated altera_hps_io "hps_io"
-Info: avalon_MM_export_bridge_0_mmi_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "avalon_MM_export_bridge_0_mmi_translator"
-Info: hps_0_h2f_axi_master_agent: "mm_interconnect_0" instantiated altera_merlin_axi_master_ni "hps_0_h2f_axi_master_agent"
-Info: avalon_MM_export_bridge_0_mmi_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "avalon_MM_export_bridge_0_mmi_agent"
-Info: avalon_MM_export_bridge_0_mmi_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "avalon_MM_export_bridge_0_mmi_agent_rsp_fifo"
+Info: dma_read_master_0_Data_Read_Master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "dma_read_master_0_Data_Read_Master_translator"
+Info: dma_read_master_0_Data_Read_Master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "dma_read_master_0_Data_Read_Master_agent"
+Info: hps_0_f2h_axi_slave_agent: "mm_interconnect_0" instantiated altera_merlin_axi_slave_ni "hps_0_f2h_axi_slave_agent"
 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
-Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
-Info: avalon_MM_export_bridge_0_mmi_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "avalon_MM_export_bridge_0_mmi_burst_adapter"
-Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: router_001: "mm_interconnect_0" instantiated altera_merlin_router "router_001"
+Info: dma_read_master_0_Data_Read_Master_limiter: "mm_interconnect_0" instantiated altera_merlin_traffic_limiter "dma_read_master_0_Data_Read_Master_limiter"
+Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_avalon_sc_fifo.v
 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
 Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_arbitrator.sv
-Info: avalon_MM_export_bridge_0_mmi_rsp_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "avalon_MM_export_bridge_0_mmi_rsp_width_adapter"
+Info: hps_0_f2h_axi_slave_wr_cmd_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "hps_0_f2h_axi_slave_wr_cmd_width_adapter"
 Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_address_alignment.sv
 Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_burst_uncompressor.sv
-Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: modular_sgdma_dispatcher_0_CSR_translator: "mm_interconnect_1" instantiated altera_merlin_slave_translator "modular_sgdma_dispatcher_0_CSR_translator"
+Info: hps_0_h2f_lw_axi_master_agent: "mm_interconnect_1" instantiated altera_merlin_axi_master_ni "hps_0_h2f_lw_axi_master_agent"
+Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: modular_sgdma_dispatcher_0_CSR_agent: "mm_interconnect_1" instantiated altera_merlin_slave_agent "modular_sgdma_dispatcher_0_CSR_agent"
+Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: modular_sgdma_dispatcher_0_CSR_agent_rsp_fifo: "mm_interconnect_1" instantiated altera_avalon_sc_fifo "modular_sgdma_dispatcher_0_CSR_agent_rsp_fifo"
+Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_avalon_sc_fifo.v
 Info: router: "mm_interconnect_1" instantiated altera_merlin_router "router"
 Info: router_002: "mm_interconnect_1" instantiated altera_merlin_router "router_002"
+Info: router_003: "mm_interconnect_1" instantiated altera_merlin_router "router_003"
+Info: modular_sgdma_dispatcher_0_CSR_burst_adapter: "mm_interconnect_1" instantiated altera_merlin_burst_adapter "modular_sgdma_dispatcher_0_CSR_burst_adapter"
+Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_avalon_st_pipeline_base.v
 Info: cmd_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_mux"
 Info: Reusing file C:/code/miha/soc/theGame/TheGamePD/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: avalon_st_adapter: "mm_interconnect_1" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: avalon_st_adapter_001: "mm_interconnect_1" instantiated altera_avalon_st_adapter "avalon_st_adapter_001"
 Info: border: "hps_io" instantiated altera_interface_generator "border"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: TheGamePD: Done "TheGamePD" with 32 modules, 89 files
+Info: error_adapter_0: "avalon_st_adapter_001" instantiated error_adapter "error_adapter_0"
+Info: TheGamePD: Done "TheGamePD" with 41 modules, 107 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis
