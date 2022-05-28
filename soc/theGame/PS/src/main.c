@@ -14,6 +14,10 @@
 #define READ_REG 0x00
 #define LENGTH_REG 0x08
 #define CONTROL_REG 0x0C
+#define CONTROL_GO 0x80000000
+#define CONTROL_PR_EOP_SOP 0x700 //control reg options - PR, EOP, SOP
+
+// TO DO: address of H2F
 void display_buffer(uint32_t *buffer, int length)
 {
     for (int i = 0; i < length; i++)
@@ -46,8 +50,8 @@ uint8_t pixel = 0;
 /* physical address spans */
 #define LWHPS2FPGA_BASE 0xff200000 /* physical address of the LWH2F bridge */
 #define LWHPS2FPGA_SPAN 0x3000     /* address span to map */
-#define HPS2FPGA_BASE 0xc0000000   /* physical address of the H2F bridge */
-#define HPS2FPGA_SPAN 0x1000       /* address span to map */
+// #define HPS2FPGA_BASE 0xc0000000   /* physical address of the H2F bridge */
+// #define HPS2FPGA_SPAN 0x1000       /* address span to map */
 
 void main()
 {
@@ -63,14 +67,14 @@ void main()
 
     _I("allocating contiguous memory");
     uint32_t *buffer_src = (uint32_t *)cma_alloc_noncached(VIDEO_ARRAY_LENGTH * sizeof(uint32_t));
-    //uint32_t *buffer_dst = (uint32_t *)cma_alloc_noncached(VIDEO_ARRAY_LENGTH * sizeof(uint32_t));
+    // uint32_t *buffer_dst = (uint32_t *)cma_alloc_noncached(VIDEO_ARRAY_LENGTH * sizeof(uint32_t));
 
     // TO DO: write a function for filling the read register with video data
-    /* TO DO: describe the concept of video data 
+    /* TO DO: describe the concept of video data
      for example - sending to FPGA part coord-s of the centers of the primitives(primitives are
      unified pero...) => the video stream could become a sequence of the x-s and y-s for every px
      on every row
-       */  
+       */
     _I("filling memory (src array)");
     for (uint32_t i = 0; i < VIDEO_ARRAY_LENGTH; i++)
         buffer_src[i] = i;
@@ -110,16 +114,24 @@ void main()
 
     _I("filling descriptor...");
 
-    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + READ_REG)) = ACP_WINDOW + cma_get_phy_addr(buffer_src); ///< read address
-    //*((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + 0x04)) = ACP_WINDOW + cma_get_phy_addr(buffer_dst); ///< write address
-    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + LENGTH_REG)) = VIDEO_ARRAY_LENGTH * sizeof(uint32_t);           ///< length
-    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + CONTROL_REG)) = 0x80000000;                                ///< control->go
+    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + READ_REG)) =
+        ACP_WINDOW + cma_get_phy_addr(buffer_src);  ///< read address
+    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + LENGTH_REG)) =
+        640 * sizeof(uint8_t);                  ///< length - one row
+    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + CONTROL_REG)) =
+        CONTROL_PR_EOP_SOP;                         //PR EOP SOP bits 
+    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + CONTROL_REG)) |=
+        0x80000000;                                 ///< control->go
 
     /// ------ DMA transaction executes here -----
     _I("DMA transaction executes...");
 
-	/// Waiting for DMA transaction to complete:
-
+    /// Waiting for DMA transaction to complete:
+    if (!((*((volatile uint32_t *)(mem_lwh2f + CSR_OFFSET + 0x00))) & 0x00000001))
+    {
+        _I("finished successfully!");
+        break;
+    }
 
     while (1)
     {
@@ -129,21 +141,8 @@ void main()
         // TO DO: some delay tuning for getting particular FPS how to connect it with a clock and for
         // sleep(500);
 
-        for (i = 0; i < 512; i++)
-        {
-            // TO DO: some delay tuning for getting particular FPS
-            for (j = 0; j < 640; j++)
-            {
                 //  TO DO: some delay tuning for getting particular FPS
                 if (pixel_compare(j, i, ball, 1) || pixel_compare(j, i, pad_0, 3) || pixel_compare(j, i, pad_1, 3))
                 {
-                    *mem_h2f = 255; // ??? dereferencing the void pointer ??? legal ???
                 }
-                else
-                {
-                    *mem_h2f = 0;
-                }
-            }
-        }
-    }
 }
