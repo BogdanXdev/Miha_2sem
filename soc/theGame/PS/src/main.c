@@ -15,20 +15,7 @@
 #define LENGTH_REG 0x08
 #define CONTROL_REG 0x0C
 #define CONTROL_GO 0x80000000
-#define CONTROL_PR_EOP_SOP 0x700 //control reg options - PR, EOP, SOP
-
-// TO DO: address of H2F
-void display_buffer(uint32_t *buffer, int length)
-{
-    for (int i = 0; i < length; i++)
-    {
-        printf("%.6u ", buffer[i]);
-
-        // new line after each 8th element
-        if (i % 8 == 7)
-            putchar('\n');
-    }
-}
+#define CONTROL_PR_EOP_SOP 0x700 // control reg options - PR, EOP, SOP
 
 uint32_t pixel_nmbr = 0;
 void pixel_cnt()
@@ -67,26 +54,9 @@ void main()
 
     _I("allocating contiguous memory");
     uint32_t *buffer_src = (uint32_t *)cma_alloc_noncached(VIDEO_ARRAY_LENGTH * sizeof(uint32_t));
-    // uint32_t *buffer_dst = (uint32_t *)cma_alloc_noncached(VIDEO_ARRAY_LENGTH * sizeof(uint32_t));
-
-    // TO DO: write a function for filling the read register with video data
-    /* TO DO: describe the concept of video data
-     for example - sending to FPGA part coord-s of the centers of the primitives(primitives are
-     unified pero...) => the video stream could become a sequence of the x-s and y-s for every px
-     on every row
-       */
-    _I("filling memory (src array)");
-    for (uint32_t i = 0; i < VIDEO_ARRAY_LENGTH; i++)
-        buffer_src[i] = i;
-
-    _I("displaying memory contents (src)");
-    display_buffer(buffer_src, VIDEO_ARRAY_LENGTH);
-    // _I("displaying memory contents (dst)");
-    // display_buffer(buffer_dst, VIDEO_ARRAY_LENGTH);
 
     int fd;                            /* file descriptor */
     volatile unsigned char *mem_lwh2f; /* memory pointer for LW HPS2FPGA bridge */
-    volatile unsigned char *mem_h2f;   /* memory pointer for LW HPS2FPGA bridge */
 
     if ((fd = open("/dev/mem", O_RDWR | O_SYNC)) < 0)
     {
@@ -102,47 +72,51 @@ void main()
         return -1;
     }
 
-    // _I("Mapping physical address - HPS2FPGA");
-    // mem_h2f = mmap(0, HPS2FPGA_SPAN, PROT_READ | PROT_WRITE, MAP_SHARED, fd, HPS2FPGA_BASE);
-    // if (mem_h2f == NULL)
-    // {
-    //     _E("Failed to map \"HPS2FPGA\" bridge");
-    //     return -1;
-    // }
-
     _I("running FPGA memcpy:");
 
     _I("filling descriptor...");
 
-    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + READ_REG)) =
-        ACP_WINDOW + cma_get_phy_addr(buffer_src);  ///< read address
-    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + LENGTH_REG)) =
-        640 * sizeof(uint8_t);                  ///< length - one row
-    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + CONTROL_REG)) =
-        CONTROL_PR_EOP_SOP;                         //PR EOP SOP bits 
-    *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + CONTROL_REG)) |=
-        0x80000000;                                 ///< control->go
-
-    /// ------ DMA transaction executes here -----
-    _I("DMA transaction executes...");
-
-    /// Waiting for DMA transaction to complete:
-    if (!((*((volatile uint32_t *)(mem_lwh2f + CSR_OFFSET + 0x00))) & 0x00000001))
-    {
-        _I("finished successfully!");
-        break;
-    }
-
     while (1)
     {
+        // TO DO: write a function for filling the read register with video data
+        /* TO DO: describe the concept of video data
+         for example - sending to FPGA part coord-s of the centers of the primitives(primitives are
+         unified pero...) => the video stream could become a sequence of the x-s and y-s for every px
+         on every row
+           */
         pads_move();
         ball_move();
+        for (uint16_t j = 0; j < 512; j++)
+        { //compare objects to j
+            buffer_src[j] = j;
+            _I("constructing one row");
+            for (uint16_t i = 0; i < 640; i++)
+            { //compare objects to i
+                buffer_src[i] = i;
+            }
 
-        // TO DO: some delay tuning for getting particular FPS how to connect it with a clock and for
-        // sleep(500);
+            *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + READ_REG)) =
+                ACP_WINDOW + cma_get_phy_addr(buffer_src); ///< read address
+            *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + LENGTH_REG)) =
+                640 * sizeof(uint8_t); ///< length - one row
+            *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + CONTROL_REG)) =
+                CONTROL_PR_EOP_SOP; // PR EOP SOP bits
+            *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + CONTROL_REG)) |=
+                0x80000000; ///< control->go
 
-                //  TO DO: some delay tuning for getting particular FPS
-                if (pixel_compare(j, i, ball, 1) || pixel_compare(j, i, pad_0, 3) || pixel_compare(j, i, pad_1, 3))
-                {
-                }
+            /// ------ DMA transaction executes here -----
+            _I("DMA transaction executes...");
+
+            /// Waiting for DMA transaction to complete:
+            if (!((*((volatile uint32_t *)(mem_lwh2f + CSR_OFFSET + 0x00))) & 0x00000001))
+            {
+                _I("finished successfully!");
+                break;
+            }
+        }
+        pads_move();
+        ball_move();
+    }
+
+    return 0;
 }
