@@ -86,13 +86,20 @@ void main()
            */
         pads_move();
         ball_move();
+        _I("constructing one frame");
         for (uint16_t j = 0; j < 512; j++)
-        { //compare objects to j
+        { // compare y part of objects to j
             buffer_src[j] = j;
             _I("constructing one row");
             for (uint16_t i = 0; i < 640; i++)
-            { //compare objects to i
-                buffer_src[i] = i;
+            { // compare x part of objects to i
+                if (ball[0].x = < i = < (ball[0].x + primitive_side))
+                    buffer_src[i] = 16;
+                for (uint8_t p = 0; p < 3; p++)
+                {
+                    if (pad_0[p].x = < i = < (ball[0].x + primitive_side))
+                        buffer_src[i] = 16;
+                }
             }
 
             *((volatile uint32_t *)(mem_lwh2f + DESC_OFFSET + READ_REG)) =
@@ -114,8 +121,24 @@ void main()
                 break;
             }
         }
-        pads_move();
-        ball_move();
+
+        if (munmap(mem_lwh2f, LWHPS2FPGA_SPAN) != 0)
+        {
+            _E("munmap() failed for pRegisters...");
+            close(fd);
+            return (1);
+        }
+        close(fd);
+
+        _I("freeing memory");
+        cma_free(buffer_src);
+
+        _I("deinitializing CMA API");
+        if (cma_release() != 0)
+        {
+            _E("failed to deinitializ CMA");
+            return 1;
+        }
     }
 
     return 0;
